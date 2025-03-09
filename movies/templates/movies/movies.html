@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "css/movies.css" %}">
+{% endblock style %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ heading }}</h1>
+    <p>{{ text }}</p>
+    <div class="filter">
+        <label for="genre-select">Выберите жанр:</label>
+        <select id="genre-select" onchange="filterMovies()">
+            <option value="all">Все жанры</option>
+            <option value="drama">Драма</option>
+            <option value="comedy">Комедия</option>
+            <option value="action">Боевик</option>
+            <option value="thriller">Триллер</option>
+            <!-- Добавьте другие жанры по необходимости -->
+        </select>
+    </div>
+    <br>
+    <div class="movies-grid">
+        {% for movie in movies %}
+        <div class="movie-card">
+            <div class="movie-image">
+                <img src="{{ movie.image }}" alt="{{ movie.title }}">
+            </div>
+            <div class="movie-info">
+                <div class="movie-title">{{ movie.title }}</div>
+                <div class="movie-description">{{ movie.description }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

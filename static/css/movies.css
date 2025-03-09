@@ -1,0 +1,41 @@
+.filter {
+    margin-bottom: 20px;
+}
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.movie-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: calc(25% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.movie-image {
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.movie-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.movie-alt {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+.movie-info {
+    padding: 15px;
+}
+.movie-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.movie-description {
+    color: #555;
+}

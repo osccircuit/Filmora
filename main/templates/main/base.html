@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{% static "css/base.css" %}">
+    {% block style %}{% endblock style %}
 </head>
 <body>
     <nav>
         <a href="{% url "main:index" %}">Главная</a>
         <a href="{% url "main:about" %}">О нас</a>
+        <a href="{% url "library:films" %}">Фильмотека</a>
     </nav>
     {% block content %}{% endblock content %}
 </body>
