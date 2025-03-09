@@ -23,7 +23,7 @@ class Movie(models.Model):
     country = models.CharField(max_length=200, blank=True, verbose_name='Страна')
     genre = models.CharField(max_length=200, blank=True, verbose_name='Жанр')
     image = models.ImageField(upload_to='movies', blank=True, null=True, verbose_name='Постер')
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, verbose_name='Жанр')
 
     class Meta():
         """Meta class for Movie model."""
