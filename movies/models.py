@@ -3,7 +3,8 @@ from django.db import models
 
 class Genre(models.Model):
     """The Genre model."""
-    name = models.CharField(max_length=200, verbose_name='Название')
+    name = models.CharField(max_length=200, verbose_name='Название',
+                            unique=True)
     slug = models.SlugField(unique=True, max_length=200, blank=True,
                             null=True, verbose_name='URL')
     
@@ -12,6 +13,10 @@ class Genre(models.Model):
         db_table = 'genre'
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
+        
+        
+    def __str__(self):
+        return str(self.name).capitalize()
 
 class Movie(models.Model):
     """The Movie model."""
@@ -30,3 +35,6 @@ class Movie(models.Model):
         db_table = 'movie'
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
+        
+    def __str__(self):
+        return f'{str(self.title).capitalize()}, Страна {str(self.country).capitalize()}'

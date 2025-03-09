@@ -13,11 +13,9 @@
     <div class="filter">
         <label for="genre-select">Выберите жанр:</label>
         <select id="genre-select" onchange="filterMovies()">
-            <option value="all">Все жанры</option>
-            <option value="drama">Драма</option>
-            <option value="comedy">Комедия</option>
-            <option value="action">Боевик</option>
-            <option value="thriller">Триллер</option>
+            {% for genre in genres %}
+                <option value="{{ genre.slug }}">{{ genre.name.capitalize }}</option>
+            {% endfor %}
             <!-- Добавьте другие жанры по необходимости -->
         </select>
     </div>
@@ -30,7 +28,9 @@
             </div>
             <div class="movie-info">
                 <div class="movie-title">{{ movie.title }}</div>
-                <div class="movie-description">{{ movie.description }}</div>
+                {% if movie.description %}
+                    <div class="movie-description">{{ movie.description|truncatewords:"25" }}</div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
