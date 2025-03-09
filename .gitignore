@@ -1,2 +1,5 @@
 db.sqlite3
 .vscode/settings.json
+.vscode/launch.json
+Filmora/__pycache__/
+Filmora/migrations/__pycache__/
