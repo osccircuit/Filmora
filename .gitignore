@@ -1,5 +1,29 @@
-db.sqlite3
-.vscode/settings.json
-.vscode/launch.json
-Filmora/__pycache__/
-Filmora/migrations/__pycache__/
+# Игнорировать папки __pycache__ и скомпилированные файлы Python
+__pycache__/
+*.py[cod]
+
+# Игнорировать все файлы в migrations, кроме __init__.py
+Filmora/migrations/*
+!Filmora/migrations/__init__.py
+
+# Игнорировать базы данных SQLite
+*.sqlite3
+
+# Игнорировать виртуальное окружение
+venv/
+.env/
+
+# Игнорировать статические файлы
+# static/
+
+# Игнорировать медиафайлы
+media/
+
+# Игнорировать файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Игнорировать лог-файлы
+*.log
