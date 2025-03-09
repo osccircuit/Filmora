@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.urls import path
 from movies import views
 
