@@ -14,3 +14,12 @@ def movies(request):
         'genres': genres
     }
     return render(request, 'movies/movies.html', context)
+
+
+def movie_details(request, slug):
+    """The concrete movie information view."""
+    movie = Movie.objects.filter(slug=slug).first()
+    context = {
+        'movie': movie,
+    }
+    return render(request, 'movies/movie.html', context)

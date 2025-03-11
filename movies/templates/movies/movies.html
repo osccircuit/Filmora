@@ -23,15 +23,17 @@
     <div class="movies-grid">
         {% for movie in movies %}
         <div class="movie-card">
-            <div class="movie-image">
-                <img src="{{ movie.image }}" alt="{{ movie.title }}">
-            </div>
-            <div class="movie-info">
-                <div class="movie-title">{{ movie.title }}</div>
-                {% if movie.description %}
-                    <div class="movie-description">{{ movie.description|truncatewords:"25" }}</div>
-                {% endif %}
-            </div>
+            <a href="{% url "library:concrete_movie" movie.slug %}">
+                <div class="movie-image">
+                    <img src="{{ movie.image }}" alt="{{ movie.title }}">
+                </div>
+                <div class="movie-info">
+                    <div class="movie-title">{{ movie.title }}  </div>
+                    {% if movie.description %}
+                        <div class="movie-description">{{   movie.description|truncatewords:"25" }}</div>
+                    {% endif %}
+                </div>
+            </a>
         </div>
         {% endfor %}
     </div>

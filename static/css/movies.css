@@ -39,3 +39,22 @@
 .movie-description {
     color: #555;
 }
+
+.movie-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: calc(25% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.movie-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+.movie-card a {
+    text-decoration: none;
+    color: inherit;
+}
