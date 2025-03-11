@@ -29,8 +29,11 @@
                 </div>
                 <div class="movie-info">
                     <div class="movie-title">{{ movie.title }}  </div>
-                    {% if movie.description %}
-                        <div class="movie-description">{{   movie.description|truncatewords:"25" }}</div>
+                    {% if movie.genre %}
+                        <div class="movie-description">{{ movie.genre }}</div>
+                    {% endif %}
+                    {% if movie.year %}
+                        <div class="movie-description">{{ movie.year }}</div>
                     {% endif %}
                 </div>
             </a>
