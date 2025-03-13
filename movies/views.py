@@ -4,14 +4,15 @@ from django.shortcuts import render
 from movies.models import Genre, Movie
 from django.core.paginator import Paginator
 
-def movies(request):
+def movies(request, slug='all'):
     """The movies view."""
-    
     page = request.GET.get('page', 1)
-    
-    movies = Movie.objects.all()
     genres = Genre.objects.all().order_by('-id')
     
+    if slug == 'all':
+        movies = Movie.objects.all().order_by('-id')
+    else:
+        movies = Movie.objects.filter(genre__slug=slug).order_by('-id')
     paginator = Paginator(movies, 4)
     current_page = paginator.page(int(page))
     context = {
@@ -20,6 +21,7 @@ def movies(request):
         'text': 'Здесь расположены фильмы которые вы смотрели.',
         'movies': current_page,
         'genres': genres,
+        'selected_genre': slug,
     }
     return render(request, 'movies/movies.html', context)
 

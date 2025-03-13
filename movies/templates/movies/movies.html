@@ -14,7 +14,7 @@
         <label for="genre-select">Выберите жанр:</label>
         <select id="genre-select" onchange="filterMovies()">
             {% for genre in genres %}
-                <option value="{{ genre.slug }}">{{ genre.name.capitalize }}</option>
+            <option value="{% url "library:films" genre.slug %}" {% if selected_genre == genre.slug %}selected{% endif %}>{{ genre.name.capitalize }}</option>
             {% endfor %}
             <!-- Добавьте другие жанры по необходимости -->
         </select>
@@ -56,4 +56,12 @@
         </span>
     </div>
 </div>
+<script>
+    function filterMovies() {
+        const genreSelect = document.getElementById('genre-select');
+        const selectedUrl = genreSelect.options[genreSelect.selectedIndex].value;
+        window.location.href = selectedUrl;
+    }
+</script>
 {% endblock content %}
+
