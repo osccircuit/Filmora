@@ -58,3 +58,33 @@
     text-decoration: none;
     color: inherit;
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+.step-links {
+    display: inline-block;
+    padding: 10px 0;
+}
+.step-links a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.step-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.step-links .current {
+    margin: 0 5px;
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+}
