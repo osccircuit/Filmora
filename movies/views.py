@@ -13,6 +13,7 @@ def movies(request, slug='all'):
         movies = Movie.objects.all().order_by('-id')
     else:
         movies = Movie.objects.filter(genre__slug=slug).order_by('-id')
+        
     paginator = Paginator(movies, 4)
     current_page = paginator.page(int(page))
     context = {
