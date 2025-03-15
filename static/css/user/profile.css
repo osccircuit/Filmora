@@ -44,6 +44,7 @@
     font-size: 36px;
     font-weight: bold;
     margin: 0 auto;
+    object-fit: cover;
 }
 
 .profile-item {
@@ -53,6 +54,14 @@
 
 .profile-item label {
     font-weight: bold;
+}
+
+.profile-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
 }
 
 .profile-item span {

@@ -11,27 +11,47 @@
     <div class="profile-container">
         <h2>Профиль пользователя</h2>
         <div class="profile-info">
-            <div class="profile-photo">
-                    {% comment %} <img src="" alt="Username"> {% endcomment %}
-                    <div class="profile-photo-placeholder"></div>
-            </div>
-            <div class="profile-item">
-                <label>Имя пользователя:</label>
-                <span></span>
-            </div>
-            <div class="profile-item">
-                <label>Электронная почта:</label>
-                <span></span>
-            </div>
-            <div class="profile-item">
-                <label>Дата регистрации:</label>
-                <span></span>
-            </div>
-        </div>
-        <div class="profile-actions">
-            <a href="" class="btn">Редактировать профиль</a>
-            <a href="" class="btn">Выйти</a>
-        </div>
+            <form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="profile-photo">
+                        {% if user.image %}
+                            <img src="{{ user.image.url }}" alt="Username">
+                        {% else %}
+                            <div class="profile-photo-placeholder"></div>
+                        {% endif %}
+                    </div>
+                    <label for="id_image">Изменить аватар</label>
+                    <input type="file" id="id_image" name="image">
+                    {% if form.image.errors %}
+                        <div class="notification error">
+                            <p>{{ form.image.errors }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="profile-item">
+                    <label for="id_username">Имя пользователя:</label>
+                    <input type="text" id="id_username" name="username" value="{{ form.username.value }}" required>
+                    {% if form.username.errors %}
+                        <div class="notification error">
+                            <p>{{ form.username.errors }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="profile-item">
+                    <label for="id_email">Электронная почта:</label>
+                    <input type="email" id="id_email" name="email" value="{{ form.email.value }}" required>
+                    {% if form.email.errors %}
+                        <div class="notification error">
+                            <p>{{ form.email.errors }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="profile-actions">
+                    <button type="submit" class="btn">Сохранить изменения</button>
+                    <a href="{% url 'users:logout' %}" class="btn">Выйти</a>
+                </div>
+            </form>
     </div>
 </div>
 {% endblock content %}
