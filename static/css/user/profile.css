@@ -38,13 +38,6 @@
     border-radius: 50%;
     background-color: #007bff;
     color: #fff;
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0 auto;
-    object-fit: cover;
 }
 
 .profile-item {

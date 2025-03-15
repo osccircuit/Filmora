@@ -12,6 +12,25 @@
         <h2>Вход</h2>
         <form action="{% url "user:login" %}" method="post">
             {% csrf_token %}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            {% if form.non_field_errors %}
+                <div class="notifications">
+                    <div class="notification error">
+                        {{ form.non_field_errors }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if messages %}
+                <div class="notifications">
+                    {% for message in messages %}
+                        <div class="notification {{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <div class="form-group">
                 <label for="id_username">Имя пользователя</label>
                 <input type="text" id="id_username" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" placeholder="Введите имя пользователя" name="username" required>

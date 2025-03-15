@@ -48,6 +48,10 @@
                     {% endif %}
                 </div>
                 <div class="profile-actions">
+                    <label>Дата регистрации:</label>
+                    <span>{{ user.date_joined }}</span>
+                </div>
+                <div class="profile-actions">
                     <button type="submit" class="btn">Сохранить изменения</button>
                     <a href="{% url 'users:logout' %}" class="btn">Выйти</a>
                 </div>
