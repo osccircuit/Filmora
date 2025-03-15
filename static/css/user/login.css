@@ -50,3 +50,16 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.register-link {
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
