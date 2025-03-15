@@ -7,3 +7,13 @@
             </div>
     </div>
 {% endif %}
+
+{% if messages %}
+    <div class="notifications">
+        {% for message in messages %}
+            <div class="notification {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
