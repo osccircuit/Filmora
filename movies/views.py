@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.core import paginator
 from django.shortcuts import render
 
 from movies.models import Genre, Movie
 from django.core.paginator import Paginator
 
+@login_required
 def movies(request, slug='all'):
     """The movies view."""
     page = request.GET.get('page', 1)
@@ -26,7 +28,7 @@ def movies(request, slug='all'):
     }
     return render(request, 'movies/movies.html', context)
 
-
+@login_required
 def movie_details(request, slug):
     """The concrete movie information view."""
     movie = Movie.objects.filter(slug=slug).first()

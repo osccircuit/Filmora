@@ -1,8 +1,26 @@
-{% extends "base.html" %}
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmora - Filmora</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'main:about' %}" class="about-link">О нас</a>
+    </nav>
     <div class="content">
-        <h1>{{ heading }}</h1>
-        <p>{{ text }}</p>
+        <div class="main-container">
+            <h1>Добро пожаловать в Filmora</h1>
+            <p>Filmora - это приложение, которое позволяет вам управлять вашей личной библиотекой фильмов. Вы можете добавлять, редактировать и удалять фильмы, а также просматривать информацию о них.</p>
+            <a href="{% url 'users:registration' %}" class="btn-main">Начать пользоваться</a>
+            <br>
+            <a href="{% url 'users:login' %}" class="btn-secondary">Войти</a>
+        </div>
     </div>
-{% endblock content %}
+</body>
+</html>
