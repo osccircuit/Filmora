@@ -73,3 +73,13 @@ def registration(request):
         'form': form,
     }
     return render(request, 'users/registration.html', context)
+
+@login_required
+def add_to_collection(request):
+    """Add film to collection."""
+    movie_id = request.POST.get('movie_id')
+    
+    movie = Movie.objects.get(id=movie_id)
+    # if movie_id:
+    #    request.user.collection.add(film_id)
+    return HttpResponseRedirect(reverse('movies:films'))
