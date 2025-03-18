@@ -8,6 +8,8 @@ from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 def login(request):
     """Login page view."""
+    if request.user.is_authenticated:
+        return redirect('movies:films')
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -58,6 +60,8 @@ def profile(request):
 
 def registration(request):
     """Registration page view."""
+    if request.user.is_authenticated:
+        return redirect('movies:films')
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
@@ -65,7 +69,7 @@ def registration(request):
             user = form.instance
             auth.login(request, user)
             messages.success(request, f'{user.username} вы успешно зарегистрировались.')
-            return HttpResponseRedirect(reverse('users:films'))
+            return HttpResponseRedirect(reverse('movies:films'))
     else:
         form = UserRegistrationForm()
     context = {

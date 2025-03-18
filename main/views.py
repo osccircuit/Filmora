@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 def index(request):
     """Main page of the site."""
+    if request.user.is_authenticated:
+        return redirect('movies:films')
     my_context = {
         'title': 'Главная - Filmora',
-        'heading': 'Добро пожаловать на главную страницу!',
-        'text': 'Здесь вы можете найти много интересного и полезного.'
+        'heading': 'Добро пожаловать в Filmora',
+        'text': 'Filmora - это приложение, которое позволяет вам управлять вашей личной библиотекой фильмов. Вы можете добавлять, редактировать и удалять фильмы, а также просматривать информацию о них.',
     }
     return render(request, 'main/index.html', my_context)
 
