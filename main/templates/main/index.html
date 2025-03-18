@@ -8,11 +8,13 @@
     <title>Filmora - Filmora</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static "css/user/notifications.css" %}">
 </head>
 <body>
     <nav>
         <a href="{% url 'main:about' %}" class="about-link">О нас</a>
     </nav>
+    {% include "includes/notifications.html" %}
     <div class="content">
         <div class="main-container">
             <h1>{{ heading }}</h1>
@@ -22,5 +24,7 @@
             <a href="{% url 'users:login' %}" class="btn-secondary">Войти</a>
         </div>
     </div>
+    <script src="{% static "js/jquery/jquery-3.7.0.min.js" %}"></script>
+    <script src="{% static "js/jquery-ajax.js" %}"></script>
 </body>
 </html>
