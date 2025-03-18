@@ -1,9 +1,13 @@
+from urllib import response
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 from django.urls import reverse
 
+from movies.models import Movie
+from users.models import UserMovie
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 def login(request):
@@ -83,7 +87,15 @@ def add_to_collection(request):
     """Add film to collection."""
     movie_id = request.POST.get('movie_id')
     
+    if movie_id is None:
+        return JsonResponse({'error': 'Не передан ID фильма.'}, status=400)
+    
     movie = Movie.objects.get(id=movie_id)
-    # if movie_id:
-    #    request.user.collection.add(film_id)
-    return HttpResponseRedirect(reverse('movies:films'))
+    UserMovie.objects.create(user=request.user, movie=movie)
+
+    button_add = render_to_string('includes/add_to_collect_btn.html', {'movie': movie, 'user_movie': True}, request)
+    response_data = {
+        'message': 'Фильм успешно добавлен в вашу коллекцию.',
+        'button_add': button_add,
+    }
+    return JsonResponse(response_data)

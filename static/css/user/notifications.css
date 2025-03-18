@@ -42,3 +42,7 @@
         transform: translateY(0);
     }
 }
+
+#jq-notification {
+    display: none; /* Initially hidden */
+}

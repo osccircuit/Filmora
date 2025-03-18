@@ -1,0 +1,12 @@
+<div class="movie-container">
+    {% if user_movie %}
+        <div class="btn-add-disabled">
+            Добавить в коллекцию
+        </div>     
+    {% else %}
+        <a href="{% url "users:add_to_collection" %}" class="btn-add add-to-collection" data-movie-id="{{ movie.id }}">
+            {% csrf_token %}
+            Добавить в коллекцию
+        </a>
+    {% endif %}
+</div>

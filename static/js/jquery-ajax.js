@@ -14,10 +14,8 @@ $(document).ready(function () {
 
         // Получаем id товара из атрибута data-product-id
         var movie_id = $(this).data("movie-id");
-
         // Из атрибута href берем ссылку на контроллер django
         var add_to_collection_url = $(this).attr("href");
-
         // делаем post запрос через ajax не перезагружая страницу
         $.ajax({
             type: "POST",
@@ -34,7 +32,9 @@ $(document).ready(function () {
                 setTimeout(function () {
                     successMessage.fadeOut(400);
                 }, 7000);
-
+                
+                var movieContainer = $(".movie-container");
+                movieContainer.html(data.button_add);
                 // Увеличиваем количество товаров в корзине (отрисовка в шаблоне)
                 // cartCount++;
                 // goodsInCartCount.text(cartCount);

@@ -17,10 +17,7 @@
             <p><strong>Дата выхода:</strong> {{ movie.year }}</p>
             <p><strong>Страна производства:</strong> {{ movie.country }}</p>
             <p><strong>Описание:</strong> {{ movie.description }}</p>
-            <a href="" class="btn-add add-to-collection" data-movie-id="{{ movie.id }}">
-                {% csrf_token %}
-                Добавить в коллекцию
-            </a>
+            {% include "includes/add_to_collect_btn.html" %}
         </div>
     </div>
 </div>

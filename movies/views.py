@@ -61,7 +61,13 @@ def user_movies(request, slug='all'):
 def movie_details(request, slug):
     """The concrete movie information view."""
     movie = Movie.objects.filter(slug=slug).first()
+    
+    if UserMovie.objects.filter(user=request.user, movie=movie).first() is None:
+        user_movie = None
+    else:
+        user_movie = True
     context = {
         'movie': movie,
+        'user_movie': user_movie,
     }
     return render(request, 'movies/movie.html', context)
