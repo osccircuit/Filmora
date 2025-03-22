@@ -51,6 +51,43 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", ".delete-from-collection", function (e) {
+        console.log(1);
+        // Блокируем его базовое действие
+        e.preventDefault();
+
+        var movie_id = $(this).data("movie-id");
+        
+        // Из атрибута href берем ссылку на контроллер django
+        var delete_from_collection = $(this).attr("href");
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: delete_from_collection,
+            data: {
+                movie_id: movie_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+                
+                var movieContainer = $(".movie-container");
+                movieContainer.html(data.button_add);
+
+            },
+
+            error: function (data) {
+                console.log("Ошибка при удалении фильма из коллекции");
+            },
+        });
+    });
+
 
 
 

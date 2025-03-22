@@ -82,9 +82,10 @@ def registration(request):
     }
     return render(request, 'users/registration.html', context)
 
-@login_required
 def add_to_collection(request):
     """Add film to collection."""
+    if not request.user.is_authenticated:
+        return redirect('main:index')
     movie_id = request.POST.get('movie_id')
     
     if movie_id is None:
@@ -98,4 +99,32 @@ def add_to_collection(request):
         'message': 'Фильм успешно добавлен в вашу коллекцию.',
         'button_add': button_add,
     }
+    return JsonResponse(response_data)
+
+def delete_from_collection(request):
+    """Delete movie from collection"""
+    if not request.user.is_authenticated:
+        return redirect('main:index')
+    
+    movie_id = request.POST.get('movie_id')
+    
+    if movie_id is None:
+        return JsonResponse({'error': 'Не передан ID фильма.'}, status=400)
+    
+    movie = UserMovie.objects.get(movie__id=movie_id)
+    movie.delete()
+    
+    original_movie = Movie.objects.get(id=movie_id)
+    # UserMovie.objects.get(movie.id=int(movie_id)).first()
+    
+    
+    button_delete = render_to_string('includes/add_to_collect_btn.html',
+                                               {'movie': original_movie, 'user_movie': False},
+                                               request)
+    
+    response_data = {
+        'message': 'Фильм успешно удален из вашей коллекции.',
+        'button_add': button_delete,
+    }
+    
     return JsonResponse(response_data)
