@@ -1,6 +1,7 @@
 from urllib import response
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
@@ -109,6 +110,8 @@ def add_to_collection(request):
 
 def delete_from_collection(request):
     """Delete movie from collection"""
+    page = request.GET.get('page', 1)
+    
     if not request.user.is_authenticated:
         return redirect('main:index')
     
@@ -129,6 +132,9 @@ def delete_from_collection(request):
     
     n_reviews = UserMovie.objects.filter(movie__id=movie_id).select_related('user')
     
+    paginator = Paginator(n_reviews, 3)
+    current_page = paginator.page(int(page))
+    
     button_delete = render_to_string('includes/add_to_collect_btn.html',
                                                {'movie': original_movie, 'user_movie': False},
                                                request)
@@ -139,7 +145,7 @@ def delete_from_collection(request):
                                              request)
     
     users_reviews = render_to_string('includes/view_reviews.html',
-                                                   {'reviews': n_reviews},
+                                                   {'reviews': current_page},
                                                    request)
     
     response_data = {

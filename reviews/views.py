@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
@@ -8,6 +9,9 @@ from users.models import UserMovie
 
 def add_review(request):
     """Add user review"""
+    
+    page = request.GET.get('page', 1)
+    
     if not request.user.is_authenticated:
         return redirect('main:index')
     
@@ -26,6 +30,9 @@ def add_review(request):
     
     n_reviews = UserMovie.objects.filter(movie__id=movie_id).select_related('user')
     
+    paginator = Paginator(n_reviews, 3)
+    current_page = paginator.page(int(page))
+    
     if user_movie.review is None or user_movie.review == '':
         user_movie.review = form_data['review']
         user_movie.mark = form_data['mark']
@@ -36,7 +43,7 @@ def add_review(request):
                                                request)
         
         users_reviews = render_to_string('includes/view_reviews.html',
-                                                   {'reviews': n_reviews},
+                                                   {'reviews': current_page},
                                                    request)
         
         response_data = {

@@ -32,3 +32,18 @@
         </div>
     {% endif %}
 {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="{% if reviews.has_previous %}?page={{ reviews.previous_page_number }}{% else %}#{% endif %}">Предыдущая</a>
+
+        <span class="current">
+            Страница {{ reviews.number }} из {{ reviews.paginator.num_pages }}
+        </span>
+
+            <a href="{% if reviews.has_next %}?page={{ reviews.next_page_number }}{% else %}#{% endif %}">Следующая</a>
+            <a href="?page={{ reviews.paginator.num_pages }}">Последняя &raquo;</a>
+    </span>
+</div>

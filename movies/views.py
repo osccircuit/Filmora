@@ -60,6 +60,9 @@ def user_movies(request, slug='all'):
 @login_required
 def movie_details(request, slug):
     """The concrete movie information view."""
+    page = request.GET.get('page', 1)
+    
+    
     movie = Movie.objects.filter(slug=slug).first()
     reviews = UserMovie.objects.filter(movie__id=movie.id, user=request.user) \
     .values('review')
@@ -82,11 +85,14 @@ def movie_details(request, slug):
         user_movie = True
         
     n_reviews = UserMovie.objects.filter(movie__id=movie.id).select_related('user')
+    
+    paginator = Paginator(n_reviews, 3)
+    current_page = paginator.page(int(page))
         
     context = {
         'movie': movie,
         'user_movie': user_movie,
-        'reviews': n_reviews,
+        'reviews': current_page,
         'review_not_add': review_not_add,
     }
     return render(request, 'movies/movie.html', context)
