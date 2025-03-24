@@ -1,0 +1,25 @@
+{% for username, added_at, review, mark in reviews %}
+    {% if review %}
+        <div class="review-card">
+            <div class="review-header">
+                <span class="username">{{ username }}</span>
+                <span class="date">{{ added_at|date:"d.m.Y H:i" }}</span>
+            </div>
+            <div class="review-rating">
+                <!-- Отображение оценки в виде звезд -->
+                <div class="star-rating">
+                    {% for i in "54321" %}
+                        {% if i|add:0 <= mark %}
+                            <span class="star filled">★</span>
+                        {% else %}
+                            <span class="star">☆</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="review-text">
+                <p>{{ review }}</p>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

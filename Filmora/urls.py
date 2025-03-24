@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('library/', include('movies.urls', namespace='library')),
     path('user/', include('users.urls', namespace='user')),
+    path('reviews/', include('reviews.urls', namespace='reviews'))
 ]
 
 if DEBUG:

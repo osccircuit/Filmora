@@ -14,6 +14,7 @@ $(document).ready(function () {
 
         // Получаем id товара из атрибута data-product-id
         var movie_id = $(this).data("movie-id");
+        
         // Из атрибута href берем ссылку на контроллер django
         var add_to_collection_url = $(this).attr("href");
         // делаем post запрос через ajax не перезагружая страницу
@@ -35,6 +36,9 @@ $(document).ready(function () {
                 
                 var movieContainer = $(".movie-container");
                 movieContainer.html(data.button_add);
+
+                var reviewForm = $(".review-form");
+                reviewForm.html(data.review_form);
                 // Увеличиваем количество товаров в корзине (отрисовка в шаблоне)
                 // cartCount++;
                 // goodsInCartCount.text(cartCount);
@@ -80,6 +84,12 @@ $(document).ready(function () {
                 var movieContainer = $(".movie-container");
                 movieContainer.html(data.button_add);
 
+                var reviewForm = $(".review-form");
+                reviewForm.html(data.review_form);
+
+                var usersReviews = $(".reviews-list");
+                usersReviews.html(data.users_reviews);
+
             },
 
             error: function (data) {
@@ -88,7 +98,65 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("submit", ".add-review", function (e) {
+        // Блокируем его базовое действие
+        e.preventDefault();
 
+        var movie_id = $(this).data("movie-id-form");
+        console.log(movie_id);
+        // Из атрибута href берем ссылку на контроллер django
+        var url = $(this).attr("href");
+        var formData = $(this).serialize();
+
+        var review = $("[name=review]").val();
+        var mark = $('input[name^="mark"]:checked').val();
+        //var mark = $("[name=mark]").val();
+        // var add_review = $(this).attr("href");
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                movie_id: movie_id,
+                review: review,
+                mark: mark,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+                
+                var reviewForm = $(".review-form");
+                reviewForm.html(data.review_handler);
+
+                var usersReviews = $(".reviews-list");
+                usersReviews.html(data.users_reviews);
+
+            },
+
+            error: function (data) {
+                console.log("Отзыв или оценка уже есть");
+            },
+        });
+    });
+
+    $(document).ready(function () {
+        $('.star-radio').on('click', function () {
+            // Получаем индекс текущей звезды, к которой кликнули
+            var index = $(this).prevAll('input').length; 
+                
+            // Убираем класс 'selected' с всех радиокнопок
+            $('input[name^="mark"]').removeClass('selected');
+
+            // Устанавливаем радиокнопку как выбранную
+            $(this).addClass('selected');
+        });
+    });    
 
 
     // Ловим собыитие клика по кнопке удалить товар из корзины

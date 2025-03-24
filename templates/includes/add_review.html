@@ -1,0 +1,26 @@
+{% load static %}
+
+{% if review_not_add == 'empty' %}
+<h2>Оставить рецензию и оценку</h2>
+<form method="post" class="add-review" data-movie-id-form="{{ movie.id }}" href="{% url "reviews:add_review" %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="review">Рецензия:</label>
+        <textarea id="review" name="review" rows="5" placeholder="Напишите вашу рецензию..."></textarea>
+    </div>
+    <div class="form-group">
+        <label>Оценка:</label>
+        <div class="star-rating">
+            {% for i in "54321" %}
+                <input type="radio" id="star{{ i }}" name="mark" value="{{ i }}" class="star-radio" />
+                <label for="star{{ i }}" title="{{ i }}" class="star-label"></label>
+            {% endfor %}
+        </div>
+    </div>    
+    <button type="submit" class="submit-btn">Отправить</button>
+</form>
+{% elif review_not_add == 'full' %}
+<h2>Спасибо за оставленный отзыв</h2>
+{% else %}
+<h2>Добавьте фильм в коллекцию чтобы оставить отзыв</h2>
+{% endif %}

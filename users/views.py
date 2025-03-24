@@ -95,9 +95,15 @@ def add_to_collection(request):
     UserMovie.objects.create(user=request.user, movie=movie)
 
     button_add = render_to_string('includes/add_to_collect_btn.html', {'movie': movie, 'user_movie': True}, request)
+    
+    review_form = render_to_string('includes/add_review.html',
+                                            {'review_not_add': 'empty',
+                                             'movie': movie},
+                                             request)
     response_data = {
         'message': 'Фильм успешно добавлен в вашу коллекцию.',
         'button_add': button_add,
+        'review_form': review_form,
     }
     return JsonResponse(response_data)
 
@@ -111,20 +117,34 @@ def delete_from_collection(request):
     if movie_id is None:
         return JsonResponse({'error': 'Не передан ID фильма.'}, status=400)
     
-    movie = UserMovie.objects.get(movie__id=movie_id)
+    movie = UserMovie.objects.filter(user = request.user).get(movie__id=movie_id)
     movie.delete()
     
     original_movie = Movie.objects.get(id=movie_id)
-    # UserMovie.objects.get(movie.id=int(movie_id)).first()
     
+    all_reviews = UserMovie.objects.filter(movie=movie_id) \
+    .select_related('user') \
+    .values_list('user__username', 'added_at', 'review', 'mark') \
+    .all()
     
     button_delete = render_to_string('includes/add_to_collect_btn.html',
                                                {'movie': original_movie, 'user_movie': False},
                                                request)
     
+    review_form = render_to_string('includes/add_review.html',
+                                            {'review_not_add': 'not_add',
+                                             'movie': original_movie},
+                                             request)
+    
+    users_reviews = render_to_string('includes/view_reviews.html',
+                                                   {'reviews': all_reviews},
+                                                   request)
+    
     response_data = {
         'message': 'Фильм успешно удален из вашей коллекции.',
         'button_add': button_delete,
+        'review_form': review_form,
+        'users_reviews': users_reviews
     }
     
     return JsonResponse(response_data)

@@ -61,6 +61,20 @@ def user_movies(request, slug='all'):
 def movie_details(request, slug):
     """The concrete movie information view."""
     movie = Movie.objects.filter(slug=slug).first()
+    reviews = UserMovie.objects.filter(movie__id=movie.id, user=request.user) \
+    .values('review')
+    
+    all_reviews = UserMovie.objects.filter(movie__id=movie.id) \
+    .select_related('user') \
+    .values_list('user__username', 'added_at', 'review', 'mark') \
+    .all()
+    
+    if reviews.count() == 0:
+        review_not_add = 'not_add'
+    elif not reviews[0].get('review'):
+        review_not_add = 'empty'
+    else:
+        review_not_add = 'full'
     
     if UserMovie.objects.filter(user=request.user, movie=movie).first() is None:
         user_movie = None
@@ -69,5 +83,7 @@ def movie_details(request, slug):
     context = {
         'movie': movie,
         'user_movie': user_movie,
+        'reviews': all_reviews,
+        'review_not_add': review_not_add,
     }
     return render(request, 'movies/movie.html', context)
