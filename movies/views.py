@@ -66,7 +66,7 @@ def movie_details(request, slug):
     
     all_reviews = UserMovie.objects.filter(movie__id=movie.id) \
     .select_related('user') \
-    .values_list('user__username', 'added_at', 'review', 'mark') \
+    .values_list('user__username', 'user__image', 'added_at', 'review', 'mark') \
     .all()
     
     if reviews.count() == 0:
@@ -80,10 +80,13 @@ def movie_details(request, slug):
         user_movie = None
     else:
         user_movie = True
+        
+    n_reviews = UserMovie.objects.filter(movie__id=movie.id).select_related('user')
+        
     context = {
         'movie': movie,
         'user_movie': user_movie,
-        'reviews': all_reviews,
+        'reviews': n_reviews,
         'review_not_add': review_not_add,
     }
     return render(request, 'movies/movie.html', context)

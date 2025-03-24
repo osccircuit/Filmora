@@ -1,15 +1,24 @@
-{% for username, added_at, review, mark in reviews %}
-    {% if review %}
+{% load static %}
+
+{% for review in reviews %}
+    {% if review.review is not None %}
         <div class="review-card">
             <div class="review-header">
-                <span class="username">{{ username }}</span>
-                <span class="date">{{ added_at|date:"d.m.Y H:i" }}</span>
+                <div class="profile-photo">
+                    {% if review.user.image %}
+                        <img src="{{ review.user.image.url }}" alt="{{ review.username }}">
+                    {% else %}
+                        <div class="profile-photo-placeholder"></div>
+                    {% endif %}
+                </div>
+                <span class="username">{{ review.user.username }}</span>
+                <span class="date">{{ review.added_at|date:"d.m.Y H:i" }}</span>
             </div>
             <div class="review-rating">
                 <!-- Отображение оценки в виде звезд -->
                 <div class="star-rating">
                     {% for i in "54321" %}
-                        {% if i|add:0 <= mark %}
+                        {% if i|add:0 <= review.mark %}
                             <span class="star filled">★</span>
                         {% else %}
                             <span class="star">☆</span>
@@ -18,7 +27,7 @@
                 </div>
             </div>
             <div class="review-text">
-                <p>{{ review }}</p>
+                <p>{{ review.review }}</p>
             </div>
         </div>
     {% endif %}

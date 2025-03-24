@@ -21,8 +21,10 @@ def add_review(request):
     
     all_reviews = UserMovie.objects.filter(movie=movie_id) \
     .select_related('user') \
-    .values_list('user__username', 'added_at', 'review', 'mark') \
+    .values_list('user__username', 'user__image', 'added_at', 'review', 'mark') \
     .all()
+    
+    n_reviews = UserMovie.objects.filter(movie__id=movie_id).select_related('user')
     
     if user_movie.review is None or user_movie.review == '':
         user_movie.review = form_data['review']
@@ -34,7 +36,7 @@ def add_review(request):
                                                request)
         
         users_reviews = render_to_string('includes/view_reviews.html',
-                                                   {'reviews': all_reviews},
+                                                   {'reviews': n_reviews},
                                                    request)
         
         response_data = {
