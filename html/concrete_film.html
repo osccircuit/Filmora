@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<link rel="stylesheet" href="/static/css/base.css" />
+		<link rel="stylesheet" href="/static/css/user/notifications.css" />
+
+		<link rel="stylesheet" href="/static/css/concrete_movie.css" />
+	</head>
+	<body>
+		<nav>
+			<a href="/library/">Главная</a>
+			<a href="/library/user-collection/">Моя Фильмотека</a>
+			<a href="/about/">О нас</a>
+
+			<a href="/user/profile/">Профиль</a>
+			<a href="/user/logout/">Выйти</a>
+
+			<a href="/admin/">Админ Панель</a>
+		</nav>
+
+		<div class="notifications">
+			<div id="jq-notification" class="notification success" role="alert"></div>
+		</div>
+
+		<div class="content">
+			<h1>Фильм 4</h1>
+			<div class="movie-detail">
+				<div class="movie-image">
+					<img src="" alt="Фильм 4" />
+				</div>
+				<div class="movie-info">
+					<p><strong>Жанр:</strong> Триллер</p>
+					<p><strong>Дата выхода:</strong> 2006</p>
+					<p><strong>Страна производства:</strong> Австрия</p>
+					<p><strong>Описание:</strong> Это 4 фильм о том и о сем</p>
+					<div class="movie-container">
+						<div class="btn-add-disabled">Добавить в коллекцию</div>
+						<a
+							href="/user/delete-from-collection/"
+							class="btn-add delete-from-collection"
+							data-movie-id="4"
+						>
+							<input
+								type="hidden"
+								name="csrfmiddlewaretoken"
+								value="6yvrpEQvb39qviXPOKI3m3QP64B1FEILCL6wwbMrycLsJhpBCbHmtnjBFUcCUdcy"
+							/>
+							Удалить из коллекции
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Форма для рецензии и оценки -->
+			<div class="review-form">
+				<h2>Спасибо за оставленный отзыв</h2>
+			</div>
+
+			<div class="reviews-list">
+				<div class="review-card">
+					<div class="review-header">
+						<div class="profile-photo">
+							<div class="profile-photo-placeholder"></div>
+						</div>
+						<span class="username">root</span>
+						<span class="date">25.03.2025 17:41</span>
+					</div>
+					<div class="review-rating">
+						<!-- Отображение оценки в виде звезд -->
+						<div class="star-rating">
+							<span class="star">☆</span>
+
+							<span class="star">☆</span>
+
+							<span class="star filled">★</span>
+
+							<span class="star filled">★</span>
+
+							<span class="star filled">★</span>
+						</div>
+					</div>
+					<div class="review-text">
+						<p>моя рецензия</p>
+					</div>
+				</div>
+
+				<div class="review-card">
+					<div class="review-header">
+						<div class="profile-photo">
+							<div class="profile-photo-placeholder"></div>
+						</div>
+						<span class="username">user</span>
+						<span class="date">25.03.2025 17:55</span>
+					</div>
+					<div class="review-rating">
+						<!-- Отображение оценки в виде звезд -->
+						<div class="star-rating">
+							<span class="star">☆</span>
+
+							<span class="star filled">★</span>
+
+							<span class="star filled">★</span>
+
+							<span class="star filled">★</span>
+
+							<span class="star filled">★</span>
+						</div>
+					</div>
+					<div class="review-text">
+						<p>vxvxvxcv</p>
+					</div>
+				</div>
+
+				<div class="pagination">
+					<span class="step-links">
+						<a href="?page=1">&laquo; Первая</a>
+						<a href="#">Предыдущая</a>
+
+						<span class="current"> Страница 1 из 1 </span>
+
+						<a href="#">Следующая</a>
+						<a href="?page=1">Последняя &raquo;</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
+		<script src="/static/js/jquery-ajax.js"></script>
+	</body>
+</html>
