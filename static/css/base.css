@@ -64,6 +64,10 @@ body {
 	color: #555;
 }
 
+/* **************************** */
+/* animation of the title h1 */
+/* **************************** */
+
 @keyframes anim {
 	from {
 		font-size: 2rem;
