@@ -64,6 +64,21 @@ body {
 	color: #555;
 }
 
+@keyframes anim {
+	from {
+		font-size: 2rem;
+		opacity: 0;
+		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
+			'YTUC' 720;
+	}
+	to {
+		font-size: 4rem;
+		opacity: 1;
+		font-variation-settings: 'wght' 900, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
+			'YTUC' 720;
+	}
+}
+
 /* **************************** */
 /* GENERAL REUSABLE COMPONENTS */
 /* **************************** */
@@ -111,4 +126,14 @@ nav a {
 }
 .content {
 	padding: 20px;
+}
+
+h1 {
+	font-size: 2rem;
+	line-height: 1.5;
+	animation-name: anim;
+	animation-duration: 4s;
+	animation-fill-mode: forwards;
+	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
+		'YTUC' 720;
 }
