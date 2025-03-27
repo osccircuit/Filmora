@@ -70,16 +70,18 @@ body {
 
 @keyframes anim {
 	from {
-		font-size: 2rem;
+		font-size: 4rem;
+		text-transform: uppercase;
 		opacity: 0;
-		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
-			'YTUC' 720;
+		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 600,
+			'YTUC' 620;
 	}
 	to {
-		font-size: 4rem;
+		font-size: 6rem;
+		text-transform: uppercase;
 		opacity: 1;
-		font-variation-settings: 'wght' 900, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
-			'YTUC' 720;
+		font-variation-settings: 'wght' 600, 'wdth' 100, 'opsz' 24, 'YTAS' 600,
+			'YTUC' 620;
 	}
 }
 
@@ -133,11 +135,12 @@ nav a {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 4rem;
+	text-transform: uppercase;
 	line-height: 1.5;
 	animation-name: anim;
 	animation-duration: 4s;
 	animation-fill-mode: forwards;
-	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 700,
-		'YTUC' 720;
+	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 600,
+		'YTUC' 620;
 }
