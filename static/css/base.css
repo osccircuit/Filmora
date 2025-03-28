@@ -120,7 +120,7 @@ body {
 	align-items: center;
 }
 
-nav {
+/* nav {
 	background-color: #f8f8f8;
 	padding: 10px;
 	text-align: center;
@@ -132,7 +132,7 @@ nav a {
 }
 .content {
 	padding: 20px;
-}
+} */
 
 h1 {
 	font-size: 4rem;

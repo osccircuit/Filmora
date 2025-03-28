@@ -4,10 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/static/css/base.css" />
-		<link rel="stylesheet" href="/static/css/index.css" />
+		<!-- <link rel="stylesheet" href="/static/css/index.css" />
 		<link rel="stylesheet" href="/static/css/user/notifications.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
@@ -23,28 +23,50 @@
 	<body>
 		<header>
 			<nav>
-				<div class="logo"></div>
+				<div class="logo">Logo</div>
 				<div><a href="/about/" class="about-link">О нас</a></div>
 			</nav>
+
+			<div class="notifications">
+				<div
+					id="jq-notification"
+					class="notification success"
+					role="alert"
+				></div>
+			</div>
+
+			<div class="content">
+				<div class="main-container">
+					<h1>Filmora</h1>
+					<p>
+						Организуйте свою коллекцию фильмов с Filmora. Добавляйте,
+						редактируйте и исследуйте любимые фильмы в удобном цифровом
+						каталоге.
+						<!-- Filmora - это приложение, которое позволяет вам управлять вашей личной
+					библиотекой фильмов. Вы можете добавлять, редактировать и удалять
+					фильмы, а также просматривать информацию о них. -->
+					</p>
+					<a class="btn" href="#">Начать пользоваться</a>
+					<br />
+					<a class="btn" href="#">Войти</a>
+				</div>
+			</div>
 		</header>
 
-		<div class="notifications">
-			<div id="jq-notification" class="notification success" role="alert"></div>
-		</div>
-
-		<div class="content">
-			<div class="main-container">
-				<h1>Filmora</h1>
+		<section>
+			<div>
+				<h2>Some random heading</h2>
 				<p>
-					Filmora - это приложение, которое позволяет вам управлять вашей личной
-					библиотекой фильмов. Вы можете добавлять, редактировать и удалять
-					фильмы, а также просматривать информацию о них.
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa tenetur
+					dolor quasi similique nam excepturi consequuntur quae possimus animi
+					architecto, corporis ratione eum natus quis, odio quaerat doloribus!
+					Veritatis, dolor! Lorem ipsum dolor sit amet consectetur adipisicing
+					elit. Eos eius reprehenderit soluta corporis, repellendus quae ducimus
+					itaque libero impedit velit veniam distinctio quos recusandae nobis
+					placeat praesentium unde. Odit, vero?
 				</p>
-				<a href="/user/registration/" class="btn-main">Начать пользоваться</a>
-				<br />
-				<a href="/user/login/" class="btn-secondary">Войти</a>
 			</div>
-		</div>
+		</section>
 		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
 		<script src="/static/js/jquery-ajax.js"></script>
 	</body>
