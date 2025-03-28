@@ -139,16 +139,39 @@ nav {
 	font-weight: 700;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 3.2rem;
+}
+
+.section-hero {
+	background-color: burlywood;
+	height: 100vh;
+}
+
+.hero-text-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 4.8rem;
+	margin-bottom: 4.8rem;
 }
 
 .heading-primary {
 	font-size: 5.2rem;
 	margin-bottom: 3.2rem;
 	text-transform: uppercase;
+
 	line-height: 1.5;
 	animation-name: anim;
 	animation-duration: 4s;
 	animation-fill-mode: forwards;
 	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 600,
 		'YTUC' 620;
+}
+
+.btn-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 4.8rem;
 }
