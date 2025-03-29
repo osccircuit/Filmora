@@ -143,7 +143,7 @@ nav {
 }
 
 .section-hero {
-	background-image: url(/img/backgr-2.png);
+	background-image: url(/img/backgr-1.png);
 
 	height: 100vh;
 	position: relative;
@@ -170,13 +170,26 @@ nav {
 	font-size: 5.2rem;
 	margin-bottom: 3.2rem;
 	text-transform: uppercase;
-
+	color: #fff;
 	line-height: 1.5;
+	margin-bottom: 4.8rem;
+	letter-spacing: 0.7px;
+
 	animation-name: anim;
 	animation-duration: 4s;
 	animation-fill-mode: forwards;
+
 	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
 		'YTUC' 420;
+}
+
+.hero-description {
+	font-size: 1.7rem;
+	line-height: 1.6;
+	margin-bottom: 4.8rem;
+	color: #fff;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .btn-box {
