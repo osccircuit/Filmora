@@ -157,7 +157,7 @@ nav {
 	background-position: center;
 	background-repeat: no-repeat;
 
-	min-height: 100vh;
+	height: 100vh;
 	position: relative;
 }
 
