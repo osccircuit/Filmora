@@ -232,13 +232,33 @@ nav {
 
 .btn:link,
 .btn:visited {
-	background-color: #0d6050;
-	color: #fff;
 	text-decoration: none;
 	font-size: 2rem;
+	color: #fff;
 	padding: 1.6rem 3.2rem;
 	border-radius: 9px;
 	display: inline-block;
+	transition: all 0.7s;
+}
+
+.btn--full:link,
+.btn--full:visited {
+	background-color: #0d6050;
+}
+
+.btn--outline,
+.btn--outline:visited {
+	background-color: #082a29;
+}
+
+.btn--full:hover,
+.btn--full:active {
+	background-color: #082a29;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+	background-color: #0d6050;
 }
 
 @keyframes spin {
@@ -253,7 +273,7 @@ nav {
 .spool {
 	width: 4rem;
 	height: 4rem;
-	background-image: url('/img/spin.svg');
+	background-image: url('/img/spin-1.svg');
 	background-size: cover;
 	border-radius: 50%;
 	/* filter: hue-rotate(36deg); */
