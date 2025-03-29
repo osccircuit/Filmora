@@ -72,15 +72,18 @@ body {
 	from {
 		font-size: 4rem;
 		text-transform: uppercase;
+
 		opacity: 0;
+		transform: translate(-50%, -20%, 0) scale(0.7);
 		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 500,
-			'YTUC' 620;
+			'YTUC' 420;
 	}
 	to {
-		font-size: 6rem;
+		font-size: 5.2rem;
 		text-transform: uppercase;
 		opacity: 1;
-		font-variation-settings: 'wght' 600, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
+		transform: translate(-50%, -20%, 0) scale(1);
+		font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
 			'YTUC' 420;
 	}
 }
@@ -168,6 +171,12 @@ nav {
 .heading-primary {
 	font-family: 'Poppins', sans-serif;
 	font-size: 5.2rem;
+
+	position: absolute;
+	top: -40%; /* Поднимаем заголовок выше центра */
+	left: 50%;
+	transform: translate(-50%, -20%); /* Центрируем и немного поднимаем */
+
 	margin-bottom: 3.2rem;
 	text-transform: uppercase;
 	color: #fff;
@@ -175,26 +184,29 @@ nav {
 	margin-bottom: 4.8rem;
 	letter-spacing: 0.7px;
 
-	animation-name: anim;
-	animation-duration: 4s;
-	animation-fill-mode: forwards;
+	animation: anim 3s cubic-bezier(0.25, 1, 0.5, 1) both;
+	transform-origin: center center;
+	backface-visibility: hidden;
+	will-change: opacity, transform;
 
-	font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
+	font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
 		'YTUC' 420;
 }
 
 .hero-description {
-	font-size: 1.7rem;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.5rem;
 	line-height: 1.6;
 	margin-bottom: 4.8rem;
 	color: #fff;
 	font-weight: 600;
 	text-transform: uppercase;
+	margin-top: 3.2rem;
 }
 
 .btn-box {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 4.8rem;
+	margin-top: 9.6rem;
 }
