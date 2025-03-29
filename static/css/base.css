@@ -75,7 +75,7 @@ body {
 
 		opacity: 0;
 		transform: translate(-50%, -20%, 0) scale(0.7);
-		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 24, 'YTAS' 500,
+		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 2.4, 'YTAS' 500,
 			'YTUC' 420;
 	}
 	to {
@@ -83,7 +83,7 @@ body {
 		text-transform: uppercase;
 		opacity: 1;
 		transform: translate(-50%, -20%, 0) scale(1);
-		font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
+		font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 2.4, 'YTAS' 400,
 			'YTUC' 420;
 	}
 }
@@ -169,7 +169,7 @@ nav {
 }
 
 .heading-primary {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 5.2rem;
 
 	position: absolute;
@@ -189,7 +189,7 @@ nav {
 	backface-visibility: hidden;
 	will-change: opacity, transform;
 
-	font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 24, 'YTAS' 400,
+	font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 2.4, 'YTAS' 400,
 		'YTUC' 420;
 }
 
