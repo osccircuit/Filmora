@@ -226,7 +226,7 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem;
+	gap: 3rem;
 	margin-top: 9.6rem;
 }
 
@@ -239,4 +239,28 @@ nav {
 	padding: 1.6rem 3.2rem;
 	border-radius: 9px;
 	display: inline-block;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spool {
+	width: 4rem;
+	height: 4rem;
+	background-image: url('/img/spin.svg');
+	background-size: cover;
+	border-radius: 50%;
+	/* filter: hue-rotate(36deg); */
+
+	position: absolute;
+	bottom: -120px;
+	left: 45%;
+	transform: translateX(-50%);
+	animation: spin 2s linear infinite;
 }
