@@ -148,10 +148,10 @@ nav {
 .section-hero {
 	background-image: linear-gradient(
 			to bottom,
-			rgba(36, 36, 36, 0.6),
-			rgba(36, 36, 36, 0.6)
+			rgba(30, 30, 30, 0.6),
+			rgba(30, 30, 30, 0.6)
 		),
-		url(/img/backgr-1.png);
+		url(/img/backgr-2.png);
 
 	background-size: cover;
 	background-position: center;
@@ -159,6 +159,11 @@ nav {
 
 	min-height: 100vh;
 	position: relative;
+}
+
+.hero {
+	max-width: 130rem;
+	margin: 0 auto;
 }
 
 .hero-text-box {
