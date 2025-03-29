@@ -145,6 +145,10 @@ nav {
 	margin-bottom: 3.2rem;
 }
 
+.logo {
+	height: 2.4rem;
+}
+
 .section-hero {
 	background-image: linear-gradient(
 			to bottom,
@@ -280,7 +284,7 @@ nav {
 
 	position: absolute;
 	bottom: -120px;
-	left: 45%;
+	left: 50%;
 	transform: translateX(-50%);
 	animation: spin 2s linear infinite;
 }
