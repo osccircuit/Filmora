@@ -146,15 +146,23 @@ nav {
 	background-image: url(/img/backgr-2.png);
 
 	height: 100vh;
+	position: relative;
 }
 
 .hero-text-box {
-	display: flex;
+	/* display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	gap: 9.6rem;
-	margin-bottom: 4.8rem;
+	gap: 9.6rem; */
+	/* width: 120rem; */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+
+	/* margin-bottom: 4.8rem; */
 }
 
 .heading-primary {
