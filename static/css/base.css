@@ -146,9 +146,18 @@ nav {
 }
 
 .section-hero {
-	background-image: url(/img/backgr-1.png);
+	background-image: linear-gradient(
+			to bottom,
+			rgba(36, 36, 36, 0.6),
+			rgba(36, 36, 36, 0.6)
+		),
+		url(/img/backgr-1.png);
 
-	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	min-height: 100vh;
 	position: relative;
 }
 
@@ -164,6 +173,10 @@ nav {
 	top: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
+
+	max-width: 60rem; /* Ограничение ширины */
+	width: 100%; /* Гибкая ширина */
+	padding: 0 2rem; /* Добавление внутренних отступов */
 
 	/* margin-bottom: 4.8rem; */
 }
@@ -181,7 +194,7 @@ nav {
 	text-transform: uppercase;
 	color: #fff;
 	line-height: 1.5;
-	margin-bottom: 4.8rem;
+
 	letter-spacing: 0.7px;
 
 	animation: anim 3s cubic-bezier(0.25, 1, 0.5, 1) both;
@@ -195,12 +208,12 @@ nav {
 
 .hero-description {
 	font-family: 'Poppins', sans-serif;
-	font-size: 1.5rem;
+	font-size: 2.2rem;
 	line-height: 1.6;
 	margin-bottom: 4.8rem;
 	color: #fff;
 	font-weight: 600;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	margin-top: 3.2rem;
 }
 
