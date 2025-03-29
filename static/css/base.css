@@ -226,5 +226,17 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 2rem;
 	margin-top: 9.6rem;
+}
+
+.btn:link,
+.btn:visited {
+	background-color: #0d6050;
+	color: #fff;
+	text-decoration: none;
+	font-size: 2rem;
+	padding: 1.6rem 3.2rem;
+	border-radius: 9px;
+	display: inline-block;
 }
