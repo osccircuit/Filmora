@@ -61,7 +61,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse_lazy('users:profile')
+        return reverse_lazy("users:profile")
 
     def form_valid(self, form):
         messages.success(self.request, "Профиль успешно обновлен.")
@@ -73,25 +73,35 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         return context
 
 
-def registration(request):
+class RegistrationView(CreateView):
     """Registration page view."""
-    if request.user.is_authenticated:
-        return redirect("movies:films")
-    if request.method == "POST":
-        form = UserRegistrationForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.instance
-            auth.login(request, user)
-            messages.success(request, f"{user.username} вы успешно зарегистрировались.")
-            return HttpResponseRedirect(reverse("movies:films"))
-    else:
-        form = UserRegistrationForm()
-    context = {
-        "title": "Регистрация - Filmora",
-        "form": form,
-    }
-    return render(request, "users/registration.html", context)
+
+    template_name = "users/registration.html"
+    form_class = UserRegistrationForm
+
+    def get_success_url(self):
+        return reverse_lazy("movies:films")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Регистрация - Filmora"
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.save()
+        user = form.instance
+
+        if user:
+            auth.login(self.request, user)
+
+        messages.success(
+            self.request, f"{user.username} вы успешно зарегистрировались."
+        )
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def add_to_collection(request):
