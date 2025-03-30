@@ -183,14 +183,14 @@ nav {
 	display: inline-block;
 	padding: 1.4rem 2.8rem;
 	border-radius: 9px;
-	background-color: #0d6050;
+	background-color: #43a694;
 	color: #fff;
 	font-weight: 600;
 }
 
 .nav-cta:hover,
 .nav-cta:active {
-	background-color: #082a29;
+	background-color: #0d6050;
 }
 
 .section-hero {
