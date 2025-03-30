@@ -266,14 +266,9 @@ nav {
 	background-color: #0d6050;
 }
 
-@keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
+/*================= 
+КАТУШКА+АНИМАЦИЯ
+=================== */
 
 .spool {
 	width: 4rem;
@@ -288,4 +283,13 @@ nav {
 	left: 50%;
 	transform: translateX(-50%);
 	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
