@@ -53,16 +53,7 @@ class LogoutView(LoginRequiredMixin, View):
         )
         auth.logout(request)
         return HttpResponseRedirect(reverse("main:index"))
-
-
-# @login_required
-# def logout(request):
-#     """Logout page view."""
-#     messages.success(request, f"{request.user.username} вы успешно вышли из системы.")
-#     auth.logout(request)
-#     return redirect(reverse("main:index"))
-
-
+    
 class ProfileView(LoginRequiredMixin, UpdateView):
     """Profile page view."""
 
