@@ -64,30 +64,9 @@ body {
 	color: #555;
 }
 
-/* **************************** */
-/* animation of the title h1 */
-/* **************************** */
+/
 
-@keyframes anim {
-	from {
-		font-size: 4rem;
-		text-transform: uppercase;
-
-		opacity: 0;
-		transform: translate(-50%, -20%) scale(0.7);
-		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 2.4, 'YTAS' 500,
-			'YTUC' 420;
-	}
-	to {
-		font-size: 5.2rem;
-		text-transform: uppercase;
-		opacity: 1;
-		transform: translate(-50%, -20%) scale(1);
-		font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 2.4, 'YTAS' 400,
-			'YTUC' 420;
-	}
-}
-
+/
 /* **************************** */
 /* GENERAL REUSABLE COMPONENTS */
 /* **************************** */
@@ -236,6 +215,10 @@ nav {
 	/* margin-bottom: 4.8rem; */
 }
 
+/* **************************** */
+/* animation of the title h1 */
+/* **************************** */
+
 .heading-primary {
 	font-family: 'Poppins', sans-serif;
 	font-size: 5.2rem;
@@ -249,15 +232,32 @@ nav {
 	color: #fff;
 	line-height: 1.5;
 
-	letter-spacing: 0.7px;
+	letter-spacing: 3px;
 
 	animation: anim 3s cubic-bezier(0.25, 1, 0.5, 1) both;
 	transform-origin: center center;
 	backface-visibility: hidden;
 	will-change: opacity, transform;
 
-	font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 2.4, 'YTAS' 400,
-		'YTUC' 420;
+	font-variation-settings: 'wght' 400, 'wdth' 100;
+}
+
+@keyframes anim {
+	from {
+		font-size: 4rem;
+		text-transform: uppercase;
+
+		opacity: 0;
+		transform: translate(-50%, -20%) scale(0.7);
+		font-variation-settings: 'wght' 100, 'wdth' 100;
+	}
+	to {
+		font-size: 5.2rem;
+		text-transform: uppercase;
+		opacity: 1;
+		transform: translate(-50%, -20%) scale(1);
+		font-variation-settings: 'wght' 400, 'wdth' 100;
+	}
 }
 
 .hero-description {
