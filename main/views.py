@@ -17,11 +17,13 @@ class IndexView(TemplateView):
         return context
 
 
-def about(request):
+class AboutView(TemplateView):
     """About page of the site."""
-    my_context = {
-        'title': 'О нас - Filmora',
-        'heading': 'О нас',
-        'text': 'Это страница "О нас" данного сайта.'
-    }
-    return render(request, 'main/about.html', my_context)
+    template_name = 'main/about.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'О нас - Filmora'
+        context['heading'] = 'О нас'
+        context['text'] = 'Это страница "О нас" данного сайта.'
+        return context
