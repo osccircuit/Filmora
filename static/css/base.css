@@ -145,6 +145,7 @@ nav {
 	font-weight: 700;
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
 	height: 9.6rem;
 	padding: 0 4.8rem;
 	margin-bottom: 3.2rem;
@@ -158,14 +159,37 @@ nav {
 	list-style: none;
 	display: flex;
 	gap: 3.2rem;
+	align-items: center;
 }
 
 .main-nav-link:link,
 .main-nav-link:visited {
+	display: inline-block;
 	text-decoration: none;
 	color: #43a694;
 	font-weight: 700;
 	font-size: 1.8rem;
+	transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+	color: #0d6050;
+}
+
+.nav-cta:link,
+.nav-cta:visited {
+	display: inline-block;
+	padding: 1.4rem 2.8rem;
+	border-radius: 9px;
+	background-color: #0d6050;
+	color: #fff;
+	font-weight: 600;
+}
+
+.nav-cta:hover,
+.nav-cta:active {
+	background-color: #082a29;
 }
 
 .section-hero {
@@ -182,6 +206,7 @@ nav {
 
 	height: 100vh;
 	position: relative;
+	margin-bottom: 9.6em;
 }
 
 .hero {
@@ -261,7 +286,7 @@ nav {
 	padding: 1.6rem 3.2rem;
 	border-radius: 9px;
 	display: inline-block;
-	transition: all 0.7s;
+	transition: all 0.3s;
 }
 
 .btn--full:link,
