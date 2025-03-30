@@ -167,7 +167,7 @@ nav {
 .main-nav-link:visited {
 	display: inline-block;
 	text-decoration: none;
-	color: #43a694;
+	color: #fff;
 	font-weight: 700;
 	font-size: 1.8rem;
 	transition: all 0.3s;
