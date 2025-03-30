@@ -8,7 +8,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views import View
+from django.views.generic import CreateView, TemplateView, UpdateView
 
 from movies.models import Movie
 from users.models import UserMovie
@@ -43,12 +44,23 @@ class UserLoginView(LoginView):
         return context
 
 
-@login_required
-def logout(request):
-    """Logout page view."""
-    messages.success(request, f"{request.user.username} вы успешно вышли из системы.")
-    auth.logout(request)
-    return redirect(reverse("main:index"))
+class LogoutView(LoginRequiredMixin, View):
+    """Profile page view."""
+
+    def get(self, request, *args, **kwargs):
+        messages.success(
+            request, f"{request.user.username} вы успешно вышли " "из системы."
+        )
+        auth.logout(request)
+        return HttpResponseRedirect(reverse("main:index"))
+
+
+# @login_required
+# def logout(request):
+#     """Logout page view."""
+#     messages.success(request, f"{request.user.username} вы успешно вышли из системы.")
+#     auth.logout(request)
+#     return redirect(reverse("main:index"))
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
