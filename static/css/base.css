@@ -74,7 +74,7 @@ body {
 		text-transform: uppercase;
 
 		opacity: 0;
-		transform: translate(-50%, -20%, 0) scale(0.7);
+		transform: translate(-50%, -20%) scale(0.7);
 		font-variation-settings: 'wght' 100, 'wdth' 100, 'opsz' 2.4, 'YTAS' 500,
 			'YTUC' 420;
 	}
@@ -82,7 +82,7 @@ body {
 		font-size: 5.2rem;
 		text-transform: uppercase;
 		opacity: 1;
-		transform: translate(-50%, -20%, 0) scale(1);
+		transform: translate(-50%, -20%) scale(1);
 		font-variation-settings: 'wght' 500, 'wdth' 100, 'opsz' 2.4, 'YTAS' 400,
 			'YTUC' 420;
 	}
@@ -149,6 +149,7 @@ nav {
 	height: 9.6rem;
 	padding: 0 4.8rem;
 	margin-bottom: 3.2rem;
+	width: 100%;
 }
 
 .logo {
