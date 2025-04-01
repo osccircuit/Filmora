@@ -1,6 +1,6 @@
 {% load static %}
 
-{% if review_not_add == 'empty' %}
+{% if review_not_add and user_movie %}
 <h2>Оставить рецензию и оценку</h2>
 <form method="post" class="add-review" data-movie-id-form="{{ movie.id }}" href="{% url "reviews:add_review" %}">
     {% csrf_token %}
@@ -19,8 +19,8 @@
     </div>    
     <button type="submit" class="submit-btn">Отправить</button>
 </form>
-{% elif review_not_add == 'full' %}
+{% elif not review_not_add and user_movie %}
 <h2>Спасибо за оставленный отзыв</h2>
-{% else %}
+{% elif not user_movie %}
 <h2>Добавьте фильм в коллекцию чтобы оставить отзыв</h2>
 {% endif %}

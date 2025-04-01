@@ -1,12 +1,13 @@
+from urllib import request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import paginator
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 from movies.models import Genre, Movie
 from users.models import UserMovie
-from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 class MovieView(LoginRequiredMixin, ListView):
@@ -14,31 +15,31 @@ class MovieView(LoginRequiredMixin, ListView):
 
     template_name = "movies/movies.html"
     model = Movie
-    context_object_name = 'movies'
+    context_object_name = "movies"
     slug = "all"
+    paginate_by = 4
 
     def get_queryset(self):
         self.slug = self.kwargs.get(self.slug)
-        if self.slug == 'all' or self.slug is None:
+        if self.slug == "all" or self.slug is None:
             # pylint: disable=no-member
-            movies = Movie.objects.all().order_by("-id") # type: ignore
+            movies = Movie.objects.all().order_by("-id")  # type: ignore
         else:
             # pylint: disable=no-member
-            movies = Movie.objects.filter(genre__slug=self.slug)
+            movies = Movie.objects.filter(genre__slug=self.slug)  # type: ignore
         return movies
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Все Фильмы - Filmora'
-        context['heading'] = 'Общая Библиотека Фильмов'
-        context['text'] = (
-            'Здесь расположены фильмы которые можно добавить ' 
-            'в вашу библиотеку.'
+        context["title"] = "Все Фильмы - Filmora"
+        context["heading"] = "Общая Библиотека Фильмов"
+        context["text"] = (
+            "Здесь расположены фильмы которые можно добавить " "в вашу библиотеку."
         )
         # pylint: disable=no-member
-        context['genres'] = Genre.objects.all().order_by("-id")
-        context['selected_genre'] = self.slug
-        context['is_user_movies'] = False
+        context["genres"] = Genre.objects.all().order_by("-id")
+        context["selected_genre"] = self.slug
+        context["is_user_movies"] = False
         return context
 
 
@@ -97,44 +98,54 @@ def user_movies(request, slug="all"):
     return render(request, "movies/movies.html", context)
 
 
+class DetailMovieView(LoginRequiredMixin, DetailView):
+    """The concrete movie information view."""
+
+    template_name = "movies/movie.html"
+    slug = ""
+    model = Movie
+    context_object_name = "movie"
+
+    def get_object(self):
+        slug = self.kwargs.get(slug=self.slug)
+        if slug is None or slug == "":
+            return 0
+        movie = Movie.objects.filter(slug).first()
+        return movie
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        page = self.request.GET.get("page", 1)
+        reviews = UserMovie.objects.filter(
+            movie__id=self.object.id, user=self.request.user
+        ).values("review")
+
+
 @login_required
 def movie_details(request, slug):
     """The concrete movie information view."""
     page = request.GET.get("page", 1)
 
-    movie = Movie.objects.filter(slug=slug).first()
-    reviews = UserMovie.objects.filter(movie__id=movie.id, user=request.user).values(
-        "review"
-    )
-
     all_reviews = (
-        UserMovie.objects.filter(movie__id=movie.id)
-        .select_related("user")
-        .values_list("user__username", "user__image", "added_at", "review", "mark")
-        .all()
+        UserMovie.objects.filter(movie__slug=slug)
     )
+    movie = get_object_or_404(Movie, slug=slug)
 
-    if reviews.count() == 0:
-        review_not_add = "not_add"
-    elif not reviews[0].get("review"):
-        review_not_add = "empty"
-    else:
-        review_not_add = "full"
+    cur_user_data = all_reviews.filter(user=request.user).first()
+    cur_user_review = cur_user_data.review if cur_user_data else None
+    cur_user_movie = cur_user_data.movie if cur_user_data else None
 
-    if UserMovie.objects.filter(user=request.user, movie=movie).first() is None:
-        user_movie = None
-    else:
-        user_movie = True
-
-    n_reviews = UserMovie.objects.filter(movie__id=movie.id).select_related("user")
-
-    paginator = Paginator(n_reviews, 3)
-    current_page = paginator.page(int(page))
+    paginator = Paginator(all_reviews, 3)
+    try:
+        current_page = paginator.page(int(page))
+    except (PageNotAnInteger, EmptyPage):
+        current_page = paginator.page(1)
 
     context = {
         "movie": movie,
-        "user_movie": user_movie,
+        "user_movie": bool(cur_user_movie),
         "reviews": current_page,
-        "review_not_add": review_not_add,
+        "review_not_add": not bool(cur_user_review),
     }
     return render(request, "movies/movie.html", context)
