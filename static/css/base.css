@@ -339,13 +339,13 @@ nav {
 /* SECTION HOWITWORKS */
 /* **************************** */
 
-.section-meals {
+.section-sta {
 	padding: 9.6rem 0;
 }
 
 .header-how {
 	text-align: center;
-	margin-bottom: 4.8rem;
+	/* margin-bottom: 4.8rem; */
 }
 
 .subheading {
@@ -388,7 +388,8 @@ nav {
 
 .how-visual-blocks {
 	justify-items: center;
-	margin-bottom: 4.8rem;
+
+	/* margin-bottom: 4.8rem; */
 }
 
 .visual-blocks-icon {
@@ -488,5 +489,23 @@ nav {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	background-color: #082a29;
-	height: 100px;
+	box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.2);
+	border-radius: 11px;
+	background-image: linear-gradient(to left bottom, #395554, #082a29);
+	overflow: hidden;
+
+	margin-bottom: 4.8rem;
+
+	height: 50rem;
+}
+
+.cta-img-box {
+	background-image: linear-gradient(
+			to left bottom,
+			rgba(57, 85, 84, 0.35),
+			rgba(8, 42, 41, 0.35)
+		),
+		url(/img/happy\ moviegoer.jpg);
+	background-size: cover;
+	background-position: center;
 }
