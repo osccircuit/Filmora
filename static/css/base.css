@@ -384,3 +384,9 @@ nav {
 .how-visual-blocks {
 	justify-items: center;
 }
+
+.visual-blocks-icon {
+	width: 5rem;
+	height: 5rem;
+	stroke-width: 5;
+}
