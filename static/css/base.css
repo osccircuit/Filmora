@@ -79,12 +79,12 @@ body {
 	display: grid;
 	column-gap: 6.4rem;
 	row-gap: 9.6rem;
+
 	/* grid-template-columns: repeat(2, 1fr); */
 }
 
 .grid--2-cols {
 	grid-template-columns: repeat(2, 1fr);
-	margin-bottom: 9rem;
 }
 
 .grid--3-cols {
@@ -379,4 +379,8 @@ nav {
 	font-weight: 700;
 	letter-spacing: 0.75;
 	color: #0d6050;
+}
+
+.how-visual-blocks {
+	justify-items: center;
 }
