@@ -352,19 +352,19 @@ nav {
 	margin-bottom: 3.2rem;
 }
 
-.howitworks-heading {
+.how-heading {
 	font-size: 4.4rem;
 	font-weight: 600;
 	color: #1a1a1a;
 	margin-bottom: 2rem;
 }
 
-.howitworks-heading strong {
+.how-heading strong {
 	font-size: 5.2rem;
 	color: #0d6050;
 }
 
-.howitworks-description {
+.how-description {
 	font-family: 'Poppins', sans-serif;
 	font-size: 2rem;
 	font-weight: 500;
@@ -373,7 +373,7 @@ nav {
 	padding: 0 4.8rem;
 }
 
-.howitworks-description strong {
+.how-description strong {
 	font-family: 'Poppins' sans-serif;
 	font-size: 2.7rem;
 	font-weight: 700;
