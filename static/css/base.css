@@ -371,6 +371,7 @@ nav {
 	color: #1a1a1a;
 	line-height: 1.6;
 	padding: 0 4.8rem;
+	margin-bottom: 6.4rem;
 }
 
 .how-description strong {
@@ -378,7 +379,7 @@ nav {
 	font-size: 2.7rem;
 	font-weight: 700;
 	letter-spacing: 0.75;
-	color: #0d6050;
+	color: rgb(13, 96, 80);
 }
 
 .how-visual-blocks {
@@ -388,5 +389,59 @@ nav {
 .visual-blocks-icon {
 	width: 5rem;
 	height: 5rem;
-	stroke-width: 5;
+
+	display: inline-block;
+}
+
+.data-icon {
+	animation: bounce 2s infinite alternate ease-in-out;
+}
+.data-icon:nth-child(1) {
+	animation-delay: 0.1s;
+}
+.data-icon:nth-child(2) {
+	animation-delay: 0.3s;
+}
+.data-icon:nth-child(3) {
+	animation-delay: 0.4s;
+}
+.data-icon:nth-child(4) {
+	animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-10px);
+	}
+}
+
+.folder-icon {
+	transform-origin: center bottom;
+	animation: moveFile 2s infinite ease-in-out;
+}
+
+@keyframes moveFile {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-1rem);
+	}
+}
+
+.film_strip-icon {
+	animation: moveFilm 4s linear infinite;
+}
+
+@keyframes moveFilm {
+	0% {
+		transform: translateY(0.3rem);
+	}
+	100% {
+		transform: translateY(2rem);
+	}
 }
