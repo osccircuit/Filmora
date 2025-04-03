@@ -384,6 +384,7 @@ nav {
 
 .how-visual-blocks {
 	justify-items: center;
+	margin-bottom: 4.8rem;
 }
 
 .visual-blocks-icon {
@@ -470,3 +471,7 @@ nav {
 	color: #333;
 	text-align: center;
 }
+
+/* **************************** */
+/*  STA SECTION  */
+/* **************************** */
