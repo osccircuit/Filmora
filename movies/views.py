@@ -20,7 +20,7 @@ class MovieView(LoginRequiredMixin, ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        self.slug = self.kwargs.get(self.slug)
+        self.slug = self.kwargs.get('slug')
         if self.slug == "all" or self.slug is None:
             # pylint: disable=no-member
             movies = Movie.objects.all().order_by("-id")  # type: ignore
@@ -101,51 +101,36 @@ def user_movies(request, slug="all"):
 class DetailMovieView(LoginRequiredMixin, DetailView):
     """The concrete movie information view."""
 
-    template_name = "movies/movie.html"
-    slug = ""
+    template_name = 'movies/movie.html'
+    slug = ''
     model = Movie
-    context_object_name = "movie"
+    context_object_name = 'movie'
 
     def get_object(self):
-        slug = self.kwargs.get(slug=self.slug)
-        if slug is None or slug == "":
+        self.slug = self.kwargs.get('slug')
+        if self.slug is None or self.slug == "":
             return 0
-        movie = Movie.objects.filter(slug).first()
+        movie = Movie.objects.filter(slug=self.slug).first()
         return movie
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         page = self.request.GET.get("page", 1)
-        reviews = UserMovie.objects.filter(
-            movie__id=self.object.id, user=self.request.user
-        ).values("review")
 
+        all_reviews = UserMovie.objects.filter(movie__slug=self.slug)
 
-@login_required
-def movie_details(request, slug):
-    """The concrete movie information view."""
-    page = request.GET.get("page", 1)
+        cur_user_data = all_reviews.filter(user=self.request.user).first()
+        cur_user_review = cur_user_data.review if cur_user_data else None
+        cur_user_movie = cur_user_data.movie if cur_user_data else None
 
-    all_reviews = (
-        UserMovie.objects.filter(movie__slug=slug)
-    )
-    movie = get_object_or_404(Movie, slug=slug)
+        paginator = Paginator(all_reviews, 3)
+        try:
+            current_page = paginator.page(int(page))
+        except (PageNotAnInteger, EmptyPage):
+            current_page = paginator.page(1)
 
-    cur_user_data = all_reviews.filter(user=request.user).first()
-    cur_user_review = cur_user_data.review if cur_user_data else None
-    cur_user_movie = cur_user_data.movie if cur_user_data else None
-
-    paginator = Paginator(all_reviews, 3)
-    try:
-        current_page = paginator.page(int(page))
-    except (PageNotAnInteger, EmptyPage):
-        current_page = paginator.page(1)
-
-    context = {
-        "movie": movie,
-        "user_movie": bool(cur_user_movie),
-        "reviews": current_page,
-        "review_not_add": not bool(cur_user_review),
-    }
-    return render(request, "movies/movie.html", context)
+        context["user_movie"] = bool(cur_user_movie)
+        context["reviews"] = current_page
+        context["review_not_add"] = not bool(cur_user_review)
+        return context
