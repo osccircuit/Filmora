@@ -56,7 +56,6 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".delete-from-collection", function (e) {
-        console.log(1);
         // Блокируем его базовое действие
         e.preventDefault();
 

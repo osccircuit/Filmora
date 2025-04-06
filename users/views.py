@@ -1,8 +1,10 @@
+from contextvars import copy_context
 from urllib import response
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import auth, messages
+from django.core import paginator
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
@@ -12,8 +14,10 @@ from django.views import View
 from django.views.generic import CreateView, TemplateView, UpdateView
 
 from movies.models import Movie
+import reviews
 from users.models import UserMovie
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
+import copy
 
 
 class UserLoginView(LoginView):
@@ -138,57 +142,48 @@ class ButtonCollectionView(View):
         }
         return JsonResponse(response_data)
 
+class ButtonDeleteView(View):
+    """Handle delete movie from collection methods"""
+    paginator = None
+    current_page = 1
+    paginate_by = 3
+        
+    def post(self, request):
+        """Delete movie from collection POST"""
 
-def delete_from_collection(request):
-    """Delete movie from collection"""
-    page = request.GET.get("page", 1)
+        movie_id = request.POST.get("movie_id")
 
-    if not request.user.is_authenticated:
-        return redirect("main:index")
+        if movie_id is None:
+            return JsonResponse({"error": "Не передан ID фильма."}, status=400)
 
-    movie_id = request.POST.get("movie_id")
+        all_user_movie_info = UserMovie.objects.filter(movie__id=movie_id).select_related('movie')
+        this_user_movie = all_user_movie_info.filter(user=request.user).get(movie__id=movie_id)
+        original_movie = all_user_movie_info.filter(user=request.user).first().movie
+        this_user_movie.delete()
 
-    if movie_id is None:
-        return JsonResponse({"error": "Не передан ID фильма."}, status=400)
+        self.paginator = Paginator(all_user_movie_info.exclude(user=request.user), self.paginate_by)
 
-    movie = UserMovie.objects.filter(user=request.user).get(movie__id=movie_id)
-    movie.delete()
+        button_delete = render_to_string(
+            "includes/add_to_collect_btn.html",
+            {"movie": original_movie, "user_movie": False},
+            request,
+        )
 
-    original_movie = Movie.objects.get(id=movie_id)
+        review_form = render_to_string(
+            "includes/add_review.html",
+            {"review_not_add": False, 'user_movie': False, "movie": original_movie},
+            request,
+        )
 
-    all_reviews = (
-        UserMovie.objects.filter(movie=movie_id)
-        .select_related("user")
-        .values_list("user__username", "user__image", "added_at", "review", "mark")
-        .all()
-    )
+        users_reviews = render_to_string(
+            "includes/view_reviews.html", {"reviews": self.paginator.page(self.current_page)},
+            request
+        )
 
-    n_reviews = UserMovie.objects.filter(movie__id=movie_id).select_related("user")
-
-    paginator = Paginator(n_reviews, 3)
-    current_page = paginator.page(int(page))
-
-    button_delete = render_to_string(
-        "includes/add_to_collect_btn.html",
-        {"movie": original_movie, "user_movie": False},
-        request,
-    )
-
-    review_form = render_to_string(
-        "includes/add_review.html",
-        {"review_not_add": "not_add", "movie": original_movie},
-        request,
-    )
-
-    users_reviews = render_to_string(
-        "includes/view_reviews.html", {"reviews": current_page}, request
-    )
-
-    response_data = {
-        "message": "Фильм успешно удален из вашей коллекции.",
-        "button_add": button_delete,
-        "review_form": review_form,
-        "users_reviews": users_reviews,
-    }
-
-    return JsonResponse(response_data)
+        response_data = {
+            "message": "Фильм успешно удален из вашей коллекции.",
+            "button_add": button_delete,
+            "review_form": review_form,
+            "users_reviews": users_reviews,
+        }
+        return JsonResponse(response_data)
