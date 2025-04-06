@@ -107,33 +107,36 @@ class RegistrationView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-def add_to_collection(request):
-    """Add film to collection."""
-    if not request.user.is_authenticated:
-        return redirect("main:index")
-    movie_id = request.POST.get("movie_id")
+class ButtonCollectionView(View):
+    """Handle add movie in collection methods"""
 
-    if movie_id is None:
-        return JsonResponse({"error": "Не передан ID фильма."}, status=400)
+    def post(self, request):
+        """Get ajax data from frontend and handling add movie to collection"""
+        movie_id = self.request.POST.get('movie_id')
+        if movie_id is None:
+            return JsonResponse({"error": "Не передан ID фильма."}, status=400)
 
-    movie = Movie.objects.get(id=movie_id)
-    UserMovie.objects.create(user=request.user, movie=movie)
+        movie = Movie.objects.get(id=movie_id)
+        UserMovie.objects.create(user=request.user, movie=movie)
 
-    button_add = render_to_string(
-        "includes/add_to_collect_btn.html",
-        {"movie": movie, "user_movie": True},
-        request,
-    )
+        button_add = render_to_string(
+            "includes/add_to_collect_btn.html",
+            {"movie": movie, "user_movie": True},
+            request,
+        )
 
-    review_form = render_to_string(
-        "includes/add_review.html", {"review_not_add": "empty", "movie": movie}, request
-    )
-    response_data = {
-        "message": "Фильм успешно добавлен в вашу коллекцию.",
-        "button_add": button_add,
-        "review_form": review_form,
-    }
-    return JsonResponse(response_data)
+        review_form = render_to_string(
+            "includes/add_review.html", 
+            {"review_not_add": True, "movie": movie, 'user_movie': True},
+            request
+        )
+
+        response_data = {
+            "message": "Фильм успешно добавлен в вашу коллекцию.",
+            "button_add": button_add,
+            "review_form": review_form,
+        }
+        return JsonResponse(response_data)
 
 
 def delete_from_collection(request):
