@@ -2,6 +2,7 @@
 $(document).ready(function () {
     // берем в переменную элемент разметки с id jq-notification для оповещений от ajax
     var successMessage = $("#jq-notification");
+    var errorMessage = $("#jq-notification-error");
 
     // Ловим собыитие клика по кнопке добавить в корзину
     $(document).on("click", ".add-to-collection", function (e) {
@@ -139,7 +140,13 @@ $(document).ready(function () {
             },
 
             error: function (data) {
-                console.log("Отзыв или оценка уже есть");
+                errorMessage.html(data.responseJSON.error);
+                errorMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    errorMessage.fadeOut(400);
+                }, 7000);
+                // console.log("Отзыв или оценка уже есть");
             },
         });
     });

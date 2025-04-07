@@ -46,3 +46,7 @@
 #jq-notification {
     display: none; /* Initially hidden */
 }
+
+#jq-notification-error {
+    display: none; /* Initially hidden */
+}
