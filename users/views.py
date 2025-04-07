@@ -110,8 +110,7 @@ class RegistrationView(CreateView):
         )
         return HttpResponseRedirect(self.get_success_url())
 
-
-class ButtonCollectionView(View):
+class ButtonCollectionView(LoginRequiredMixin, View):
     """Handle add movie in collection methods"""
 
     def post(self, request):
@@ -119,6 +118,7 @@ class ButtonCollectionView(View):
         movie_id = self.request.POST.get('movie_id')
         if movie_id is None:
             return JsonResponse({"error": "Не передан ID фильма."}, status=400)
+
 
         movie = Movie.objects.get(id=movie_id)
         UserMovie.objects.create(user=request.user, movie=movie, review=None)
@@ -142,7 +142,7 @@ class ButtonCollectionView(View):
         }
         return JsonResponse(response_data)
 
-class ButtonDeleteView(View):
+class ButtonDeleteView(LoginRequiredMixin, View):
     """Handle delete movie from collection methods"""
     paginator = None
     current_page = 1
