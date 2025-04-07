@@ -121,7 +121,7 @@ class ButtonCollectionView(View):
             return JsonResponse({"error": "Не передан ID фильма."}, status=400)
 
         movie = Movie.objects.get(id=movie_id)
-        UserMovie.objects.create(user=request.user, movie=movie)
+        UserMovie.objects.create(user=request.user, movie=movie, review=None)
 
         button_add = render_to_string(
             "includes/add_to_collect_btn.html",
