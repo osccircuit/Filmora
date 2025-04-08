@@ -562,19 +562,28 @@ nav {
 
 .section-testimonials {
 	padding: 9.6rem 0;
-	/* position: relative;
-} */
-
-.testimonials-container {
 }
 
 .logo-testimonials {
-	transform: scale(0.2);
-	/* position: absolute;
-	top: -5%;
-	left: -26%; */
+	height: 2.4rem;
+	stroke: #083a30;
+	stroke-width: 2;
+	margin-bottom: 3.4rem;
+}
 
-	transform-origin: top left;
+.wheel {
+	transform-box: fill-box; /* Область трансформации ограничивается самим элементом */
+	transform-origin: center; /* Центр вращения - центр элемента */
+	animation: rotateWheel 3s linear infinite;
+}
+
+@keyframes rotateWheel {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .testimonials-heading {
