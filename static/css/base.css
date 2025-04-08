@@ -562,6 +562,26 @@ nav {
 
 .section-testimonials {
 	padding: 9.6rem 0;
+	/* position: relative;
+} */
+
+.testimonials-container {
+}
+
+.logo-testimonials {
+	transform: scale(0.2);
+	/* position: absolute;
+	top: -5%;
+	left: -26%; */
+
+	transform-origin: top left;
+}
+
+.testimonials-heading {
+	font-size: 3.6rem;
+	font-weight: 600;
+	color: #1a1a1a;
+	margin-bottom: 1.2rem;
 }
 
 .testimonials {
