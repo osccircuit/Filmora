@@ -565,9 +565,6 @@ nav {
 	gap: 1.6rem;
 	padding: 9.6rem;
 	justify-content: center;
-	/* display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 4.8rem; */
 }
 
 .testimonial-img {
@@ -591,9 +588,6 @@ nav {
 	display: flex;
 	gap: 1.6rem;
 	padding: 0 3.2rem 4.8rem 3.2rem;
-
-	/* display: grid;
-	grid-template-columns: repeat(2, 1fr); */
 }
 
 .gallery-item img {
