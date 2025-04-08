@@ -57,7 +57,8 @@ class CreatorReviewView(LoginRequiredMixin, View):
 
             users_reviews = render_to_string(
                 "includes/view_reviews.html",
-                {"reviews": paginator.page(self.page)},
+                {"reviews": paginator.page(self.page),
+                 "current_username": request.user.username},
                 request,
             )
 
@@ -68,3 +69,31 @@ class CreatorReviewView(LoginRequiredMixin, View):
             }
             return JsonResponse(response_data)
         return JsonResponse({"error": "Отзыв или оценка уже есть"}, status=400)
+
+
+class DeleteReviewView(LoginRequiredMixin, View):
+    paginate_by = 3
+    page = 1
+
+    def post(self, request):
+        movie_id = request.POST.get("movie_id")
+        if movie_id is None:
+            return JsonResponse({"error": "Не передан id фильма"}, status=404)
+
+        users_movie = UserMovie.objects.filter(movie__id=movie_id)
+
+        users_movie.filter(user=request.user).first().review.delete()
+
+        paginator = Paginator(users_movie, self.paginate_by)
+
+        users_reviews = render_to_string(
+            "includes/view_reviews.html",
+            {"reviews": paginator.page(self.page)},
+            request,
+        )
+
+        response_data = {
+            "message": "Ваш отзыв успешно удален",
+            "users_reviews": users_reviews,
+        }
+        return JsonResponse(response_data)
