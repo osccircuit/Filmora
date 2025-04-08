@@ -189,6 +189,8 @@ $(document).ready(function () {
                     successMessage.fadeOut(400);
                 }, 7000);
                 
+                var usersReviews = $(".reviews-list");
+                usersReviews.html(data.users_reviews);
             },
 
             error: function (data) {
