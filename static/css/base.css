@@ -551,6 +551,12 @@ nav {
 	margin-bottom: 1.2rem;
 }
 
+.testimonials-heading strong {
+	font-size: 4.4rem;
+	font-weight: 700;
+	color: #0d6050;
+}
+
 .testimonials {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
