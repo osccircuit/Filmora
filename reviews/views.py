@@ -82,7 +82,7 @@ class DeleteReviewView(LoginRequiredMixin, View):
 
         users_movie = UserMovie.objects.filter(movie__id=movie_id)
 
-        users_movie.filter(user=request.user).first().review.delete()
+        users_movie.filter(user=request.user).update(review=None)
 
         paginator = Paginator(users_movie, self.paginate_by)
 
