@@ -29,6 +29,12 @@
             <div class="review-text">
                 <p>{{ review.review }}</p>
             </div>
+            <div class="review-control">
+                {% if review.user.username == current_username %}
+                    <button class="btn-edit-review" data-review-id="{{ review.id }}">✏️ Изменить</button>
+                    <button class="btn-delete-review" data-review-id="{{ review.id }}">🗑️ Удалить</button>
+                {% endif %}
+            </div>
         </div>
     {% endif %}
 {% endfor %}

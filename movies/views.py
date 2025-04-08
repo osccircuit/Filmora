@@ -1,3 +1,4 @@
+from urllib import request
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView
 from movies.mixins import MovieMixin
@@ -113,4 +114,5 @@ class DetailMovieView(LoginRequiredMixin, DetailView):
         context["user_movie"] = bool(cur_user_movie)
         context["reviews"] = current_page
         context["review_not_add"] = not bool(cur_user_review)
+        context["current_username"] = self.request.user.username
         return context
