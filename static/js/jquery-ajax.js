@@ -164,6 +164,44 @@ $(document).ready(function () {
         });
     });    
 
+    $(document).on("click", ".remove-review", function (e) {
+        e.preventDefault();
+
+        var movie_id = $(this).data("movie-id");
+        console.log(movie_id);
+        // Из атрибута href берем ссылку на контроллер django
+        var url = $(this).attr("href");
+
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                movie_id: movie_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+                
+            },
+
+            error: function (data) {
+                errorMessage.html(data.responseJSON.error);
+                errorMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    errorMessage.fadeOut(400);
+                }, 7000);
+                // console.log("Отзыв или оценка уже есть");
+            },
+        });
+    });
 
     // Ловим собыитие клика по кнопке удалить товар из корзины
    /* $(document).on("click", ".remove-from-cart", function (e) {
