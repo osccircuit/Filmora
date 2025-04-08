@@ -481,7 +481,7 @@ nav {
 /*  STA SECTION  */
 /* **************************** */
 
-.section-meals {
+.section-cta {
 	padding: 9.6rem 0;
 }
 
@@ -559,3 +559,7 @@ nav {
 /* **************************** */
 /*  TESTIMONIALS SECTION  */
 /* **************************** */
+
+.section-testimonials {
+	padding: 9.6rem 0;
+}
