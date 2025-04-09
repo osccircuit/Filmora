@@ -642,16 +642,17 @@ nav {
 
 .pricing-plan-std {
 	background-color: #e6eaea;
+	overflow: hidden;
 }
 
 .pricing-plan-prem {
 	background: linear-gradient(135deg, #083a30, #082a29, #083a30);
-	background-size: 200% 200%; /* Увеличиваем размер фона для анимации */
-	animation: glossy-effect 4s ease-in-out infinite; /* Добавляем анимацию */
-
-	border: 0.05rem solid #43a694;
-
+	background-size: 200% 200%;
+	animation: glossy-effect 4s ease-in-out infinite;
+	box-shadow: inset 0 0 0 1px #43a694;
+	overflow: hidden;
 	position: relative;
+	overflow: hidden;
 }
 
 @keyframes glossy-effect {
@@ -669,15 +670,16 @@ nav {
 .pricing-plan-prem::after {
 	content: 'Выбор ❤️ ценителей';
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 7%;
+	right: -11%;
 
 	text-transform: uppercase;
 	font-size: 1.6rem;
-	font-weight: 700;
+	font-weight: 900;
 	color: #082a29;
 	background-color: #fff;
-	padding: 0.4rem;
+	padding: 0.8rem 6rem 0.6rem;
+	transform: rotate(30deg);
 }
 
 .priсe-text {
@@ -811,5 +813,5 @@ nav {
 .btn-price:hover,
 .btn-price:active {
 	background-color: #082a29;
-	box-shadow: inset 0 0 0 2px #43a694;
+	box-shadow: inset 0 0 0 2px #3c9585;
 }
