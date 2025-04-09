@@ -637,7 +637,7 @@ nav {
 
 .pricing-plan {
 	border-radius: 30px;
-	padding: 4.8rem;
+	padding: 4.8rem 4.8rem 6.2rem 4.8rem;
 }
 
 .pricing-plan-std {
@@ -648,6 +648,10 @@ nav {
 	background: linear-gradient(135deg, #083a30, #082a29, #083a30);
 	background-size: 200% 200%; /* Увеличиваем размер фона для анимации */
 	animation: glossy-effect 4s ease-in-out infinite; /* Добавляем анимацию */
+
+	border: 0.05rem solid #43a694;
+
+	position: relative;
 }
 
 @keyframes glossy-effect {
@@ -662,11 +666,25 @@ nav {
 	}
 }
 
+.pricing-plan-prem::after {
+	content: 'Выбор ❤️ ценителей';
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	text-transform: uppercase;
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #082a29;
+	background-color: #fff;
+	padding: 0.4rem;
+}
+
 .priсe-text {
 	font-size: 1.8rem;
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #0d6050;
+	color: #43a694;
 	display: block;
 	text-align: center;
 	padding-bottom: 6.2rem;
@@ -675,17 +693,17 @@ nav {
 .priсing-heading {
 	font-size: 3.6rem;
 	font-weight: 600;
-	color: #1a1a1a;
+	color: #fff;
 
 	text-align: center;
-	margin-top: 3.2rem;
+
 	margin-bottom: 6.4rem;
 }
 
 .priсing-heading strong {
 	font-size: 4.4rem;
-	font-weight: 700;
-	color: #0d6050;
+	font-weight: 800;
+	color: #082a29;
 }
 
 .plan-header {
@@ -701,6 +719,9 @@ nav {
 	letter-spacing: 0.75;
 	margin-bottom: 3.2rem;
 }
+.plan-name-prem {
+	color: #43a694;
+}
 
 .plan-price {
 	font-size: 6.2rem;
@@ -715,10 +736,18 @@ nav {
 	margin-left: 0.8rem;
 }
 
+.plan-price-prem {
+	color: #fff;
+}
+
 .plan-text {
 	font-size: 1.6rem;
 	font-weight: 600;
 	line-height: 1.6;
+}
+
+.plan-text-prem {
+	color: #43a694;
 }
 
 .list {
@@ -736,6 +765,15 @@ nav {
 	gap: 2.2rem;
 }
 
+.list-item-std {
+	color: #555;
+	font-weight: 500;
+}
+
+.list-item-prem {
+	color: #fff;
+}
+
 .list-icon {
 	font-size: 2.4rem;
 	box-shadow: inset 0 0 0 3px #0d6050;
@@ -745,11 +783,33 @@ nav {
 	color: #0d6050;
 }
 
-.plan-sing-up {
-	text-align: center;
-	margin-top: 4.8rem;
+.list-icon-prem {
+	box-shadow: inset 0 0 0 3px #43a694;
+	color: #43a694;
 }
 
-.btn-price {
-	margin-left: 0;
+.plan-sing-up {
+	text-align: center;
+	margin-top: 4rem;
+}
+
+.btn-price:link,
+.btn-price:visited {
+	display: inline-block;
+	text-decoration: none;
+
+	color: #fff;
+	font-weight: 400;
+	font-size: 1.8rem;
+	padding: 1.6rem 3.2rem;
+	border-radius: 9px;
+	background-color: #0d6050;
+
+	transition: all 0.3s;
+}
+
+.btn-price:hover,
+.btn-price:active {
+	background-color: #082a29;
+	box-shadow: inset 0 0 0 2px #43a694;
 }
