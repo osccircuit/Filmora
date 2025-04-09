@@ -571,6 +571,7 @@ nav {
 	width: 6.4rem;
 	border-radius: 50%;
 	margin-bottom: 3.2rem;
+	box-shadow: 0 0.2rem 0 rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-text {
@@ -579,9 +580,14 @@ nav {
 	margin-bottom: 1.6rem;
 }
 
+.testimonial-text img {
+	width: 3.4rem;
+	height: 3.4rem;
+}
+
 .testimonial-name {
 	font-size: 1.6rem;
-	color: #777;
+	color: #495057;
 }
 
 .gallery {
@@ -593,9 +599,4 @@ nav {
 .gallery-item img {
 	display: block;
 	width: 100%;
-}
-
-.testimonial-text img {
-	width: 3.4rem;
-	height: 3.4rem;
 }
