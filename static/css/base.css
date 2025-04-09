@@ -610,3 +610,11 @@ nav {
 .gallery-item img:hover {
 	transform: scale(1.1);
 }
+
+/* **************************** */
+/*  PRISING SECTION  */
+/* **************************** */
+
+.section-prising {
+	padding: 9.6rem 0;
+}
