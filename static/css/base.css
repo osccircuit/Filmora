@@ -617,6 +617,49 @@ nav {
 
 .section-priсing {
 	padding: 9.6rem 0;
+
+	background: linear-gradient(135deg, #082a29, #1a4d4b, #082a29);
+	background-size: 200% 200%;
+	animation: glossy-effect 3s ease-in-out infinite;
+}
+
+@keyframes glossy-effect {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.pricing-plan {
+	border-radius: 30px;
+	padding: 4.8rem;
+}
+
+.pricing-plan-std {
+	background-color: #e6eaea;
+}
+
+.pricing-plan-prem {
+	background: linear-gradient(135deg, #083a30, #082a29, #083a30);
+	background-size: 200% 200%; /* Увеличиваем размер фона для анимации */
+	animation: glossy-effect 4s ease-in-out infinite; /* Добавляем анимацию */
+}
+
+@keyframes glossy-effect {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .priсe-text {
@@ -705,4 +748,8 @@ nav {
 .plan-sing-up {
 	text-align: center;
 	margin-top: 4.8rem;
+}
+
+.btn-price {
+	margin-left: 0;
 }
