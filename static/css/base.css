@@ -594,3 +594,8 @@ nav {
 	display: block;
 	width: 100%;
 }
+
+.testimonial-text img {
+	width: 3.4rem;
+	height: 3.4rem;
+}
