@@ -831,9 +831,71 @@ nav {
 /* **************************** */
 
 .footer {
-	padding: 9.6rem 0;
+	padding: 8rem 0 9.6rem 0;
 }
 
 .grig-footer {
 	grid-template-columns: 2fr 1fr 1fr;
+}
+
+.logo-col {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+.logo-footer {
+	margin: 0;
+	padding: 0;
+	height: 3rem;
+}
+
+.footer-email-link:link,
+.footer-email-link:visited {
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+	font-size: 1.6rem;
+	font-weight: 600;
+	transition: all 0.3s;
+	color: #083a30;
+}
+
+.footer-email-link:hover,
+.footer-email-link:active {
+	color: #555;
+}
+
+.copyright {
+	font-size: 1.4rem;
+	color: #555;
+	font-weight: 500;
+}
+
+.nav-first-column {
+	justify-content: end;
+}
+
+.nav-second-column {
+	justify-content: end;
+}
+
+.footer-nav {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+.footer-link:link,
+.footer-link:visited {
+	text-decoration: none;
+	font-size: 1.6rem;
+	font-weight: 500;
+	color: #555;
+	transition: all 0.3s;
+}
+
+.footer-link:hover,
+.footer-link:active {
+	color: #082a29;
 }
