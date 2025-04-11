@@ -825,3 +825,15 @@ nav {
 	background-color: #082a29;
 	box-shadow: inset 0 0 0 2px #43a694;
 }
+
+/* **************************** */
+/* FOOTER */
+/* **************************** */
+
+.footer {
+	padding: 9.6rem 0;
+}
+
+.grig-footer {
+	grid-template-columns: 2fr 1fr 1fr;
+}
