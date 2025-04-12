@@ -31,11 +31,11 @@
             </div>
             <div class="review-control">
                 {% if review.user.username == current_username %}
-                    <a href="{% url "reviews:delete_review" %}" class="btn-edit-review remove-review" data-movie-id="{{ review.movie.id }}">
+                    <a class="btn-edit-review">
                         {% csrf_token %}
                         ✏️ Изменить
                     </a>
-                    <a class="btn-delete-review" data-review-id="{{ review.movie.id }}">
+                    <a href="{% url "reviews:delete_review" %}" class="btn-delete-review remove-review" data-movie-id="{{ review.movie.id }}">
                         {% csrf_token %}
                         🗑️ Удалить
                     </a>

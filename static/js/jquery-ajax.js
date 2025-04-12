@@ -103,7 +103,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var movie_id = $(this).data("movie-id-form");
-        console.log(movie_id);
+        // console.log(movie_id);
         // Из атрибута href берем ссылку на контроллер django
         var url = $(this).attr("href");
         var formData = $(this).serialize();
@@ -168,7 +168,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var movie_id = $(this).data("movie-id");
-        console.log(movie_id);
+        // console.log(movie_id);
         // Из атрибута href берем ссылку на контроллер django
         var url = $(this).attr("href");
 
@@ -191,6 +191,10 @@ $(document).ready(function () {
                 
                 var usersReviews = $(".reviews-list");
                 usersReviews.html(data.users_reviews);
+
+                var formReview = $(".review-form");
+                formReview.html(data.review_handler);
+                // console.log(data.review_handler);
             },
 
             error: function (data) {

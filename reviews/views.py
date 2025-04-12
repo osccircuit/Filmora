@@ -82,9 +82,20 @@ class DeleteReviewView(LoginRequiredMixin, View):
 
         users_movie = UserMovie.objects.filter(movie__id=movie_id)
 
-        users_movie.filter(user=request.user).update(review=None)
+        current_user_movie = users_movie.filter(user=request.user).first()
+        if current_user_movie.review is None:
+            return JsonResponse({"error": "Отзыв отсутствует у пользователя"}, status=404)
+        else:
+            current_user_movie.review = None
+            current_user_movie.save()
 
         paginator = Paginator(users_movie, self.paginate_by)
+
+        review_handler = render_to_string(
+            "includes/add_review.html",
+            {"movie": current_user_movie.movie, "review_not_add": True, "user_movie": True},
+            request,
+        )
 
         users_reviews = render_to_string(
             "includes/view_reviews.html",
@@ -95,5 +106,6 @@ class DeleteReviewView(LoginRequiredMixin, View):
         response_data = {
             "message": "Ваш отзыв успешно удален",
             "users_reviews": users_reviews,
+            "review_handler": review_handler,
         }
         return JsonResponse(response_data)
