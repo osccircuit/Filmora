@@ -7,6 +7,6 @@ Instead, 1rem = 1em = 16px */
 
 @media (max-width: 82em) {
 	.hero {
-		min-width: 120rem;
+		max-width: 120rem;
 	}
 }
