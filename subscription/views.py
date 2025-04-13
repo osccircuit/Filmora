@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect, JsonResponse
+from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class OrderSubscriptionView(LoginRequiredMixin, TemplateView):
     template_name = "subscription/subscription.html"
@@ -10,3 +13,13 @@ class OrderSubscriptionView(LoginRequiredMixin, TemplateView):
         context["title"] = "Оформление подписки"
         return context
 
+
+class PaySubscription(LoginRequiredMixin, View):
+
+    def post(self, request):
+        subscription_level = request.POST.get("level")
+
+        response = {
+            "message": f"Подписка {subscription_level} успешно оплачена",
+        }
+        return JsonResponse(response)

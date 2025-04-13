@@ -75,7 +75,10 @@
                 </div>
             </div>
             
-            <button class="pay-btn" onclick="processPayment()">Оплатить 1 000 ₽</button>
+            <button class="pay-btn pay-subscription" data-level-subscription="premium" data-controller-url="{% url "subscription:subscription_pay" %}">
+                {% csrf_token %}
+                Оплатить 1 000 ₽
+            </button>
         </div>
     </div>
 </div>

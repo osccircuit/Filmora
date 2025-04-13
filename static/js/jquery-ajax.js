@@ -209,6 +209,39 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", ".pay-subscription", function (e) {
+        e.preventDefault();
+
+        var url = this.dataset.controllerUrl;
+        var level_sub = $(this).data("level-subscription");
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                level: level_sub,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+                
+            },
+            error: function (data) {
+                errorMessage.html(data.responseJSON.error);
+                errorMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    errorMessage.fadeOut(400);
+                }, 7000);
+                // console.log("Отзыв или оценка уже есть");
+            },
+        });
+    });
     // Ловим собыитие клика по кнопке удалить товар из корзины
    /* $(document).on("click", ".remove-from-cart", function (e) {
         // Блокируем его базовое действие
