@@ -28,6 +28,7 @@
     </nav>
     {% include "includes/notifications.html" %}
     {% block content %}{% endblock content %}
+    {% block page_script %}{% endblock page_script %}
     <script src="{% static "js/jquery/jquery-3.7.0.min.js" %}"></script>
     <script src="{% static "js/jquery-ajax.js" %}"></script>
 </body>
