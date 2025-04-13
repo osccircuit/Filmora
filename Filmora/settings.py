@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'main',
     'movies',
     'users',
+    'reviews',
+    'subscription'
 ]
 
 MIDDLEWARE = [

@@ -20,12 +20,14 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls', namespace='main')),
     path('library/', include('movies.urls', namespace='library')),
     path('user/', include('users.urls', namespace='user')),
-    path('reviews/', include('reviews.urls', namespace='reviews'))
+    path('reviews/', include('reviews.urls', namespace='reviews')),
+    path('subscription/', include('subscription.urls', namespace='subscription'))
 ]
 
 if DEBUG:
