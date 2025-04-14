@@ -455,17 +455,6 @@ nav {
 	margin-bottom: 4.8rem;
 }
 
-.cta-img-box {
-	background-image: linear-gradient(
-			to left bottom,
-			rgba(57, 85, 84, 0.35),
-			rgba(8, 42, 41, 0.35)
-		),
-		url(/img/happy\ moviegoer.jpg);
-	background-size: cover;
-	background-position: center;
-}
-
 .cta-text-box {
 	text-align: start;
 	padding: 3.2rem;
@@ -512,6 +501,17 @@ nav {
 .btn-sta:active {
 	background-color: #082a29;
 	box-shadow: inset 0 0 0 2px #9caaa9;
+}
+
+.cta-img-box {
+	background-image: linear-gradient(
+			to left bottom,
+			rgba(57, 85, 84, 0.35),
+			rgba(8, 42, 41, 0.35)
+		),
+		url(/img/happy\ moviegoer.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 /* **************************** */

@@ -1,0 +1,97 @@
+/* rem and em do NOT depend on html font-size in media queries!
+Instead, 1rem = 1em = 16px */
+
+/* **************************** */
+/* BELOW 1300px (Smaller desktops) */
+/* **************************** */
+
+@media (max-width: 82em) {
+	.hero {
+		max-width: 120rem;
+	}
+}
+
+@media (max-width: 75em) {
+	html {
+		/* 9px / 16px = 56.25% */
+		font-size: 56.25%;
+	}
+
+	.testimonials {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.2rem;
+	}
+}
+
+@media (max-width: 63em) {
+	.grid {
+		column-gap: 3.2rem;
+		row-gap: 6.4rem;
+	}
+
+	.grid--3-cols {
+		grid-template-columns: 1fr;
+	}
+
+	.how-heading {
+		font-size: 3.6rem;
+	}
+
+	.how-heading strong {
+		font-size: 4.4rem;
+	}
+
+	.how-description {
+		font-size: 2.4rem;
+	}
+
+	.how-description strong {
+		font-size: 3.2rem;
+	}
+
+	.visual-blocks-title {
+		font-size: 2.4rem;
+	}
+
+	.visual-blocks-title strong {
+		font-size: 3rem;
+	}
+
+	.visual-blocks-text {
+		font-size: 2rem;
+	}
+
+	.cta {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.cta-img-box {
+		height: 70rem;
+	}
+
+	.cta-text-box {
+		text-align: center;
+	}
+
+	.cta-title {
+		margin-left: 0;
+		font-size: 2.4rem;
+	}
+
+	.btn-sta {
+		margin-left: 0;
+	}
+
+	.testimonials {
+		gap: 0.8rem;
+	}
+
+	.testimonial-text {
+		margin-bottom: 1.2rem;
+	}
+
+	.testimonial-name {
+		margin-bottom: 1.8rem;
+	}
+}
