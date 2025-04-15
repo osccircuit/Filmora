@@ -94,4 +94,89 @@ Instead, 1rem = 1em = 16px */
 	.testimonial-name {
 		margin-bottom: 1.8rem;
 	}
+
+	/* MOBILE NAVIGATION */
+	.header__hero {
+		padding: 2rem 0;
+		text-align: center; /* Центрируем содержимое */
+	}
+
+	.main-nav {
+		flex-direction: column; /* Размещаем элементы по вертикали */
+		align-items: center; /* Центрируем по горизонтали */
+		height: auto;
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+	.logo {
+		margin-bottom: 2rem; /* Отступ между логотипом и кнопкой бургера */
+	}
+
+	.btn-mobile-nav {
+		display: block; /* Показываем кнопку бургера */
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: 2.4rem;
+		color: #fff; /* Цвет иконки */
+		z-index: 1000;
+	}
+
+	.icon-mobile-nav {
+		font-size: 2.4rem;
+		color: #fff;
+		transition: opacity 0.3s ease;
+	}
+
+	.icon-mobile-nav[name='menu'] {
+		display: block; /* Иконка "меню" по умолчанию */
+	}
+
+	.icon-mobile-nav[name='close'] {
+		display: none; /* Иконка "закрыть" скрыта */
+	}
+
+	.main-nav-list {
+		display: none; /* Скрываем меню */
+		flex-direction: column; /* Колонка для мобильного меню */
+		position: absolute;
+		top: 10rem; /* Располагаем ниже логотипа и кнопки */
+		left: 50%;
+		transform: translateX(-50%);
+		background: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+		width: 90%; /* Ширина меню */
+		max-width: 400px; /* Ограничение ширины */
+		border-radius: 9px;
+		opacity: 0; /* Начинаем с прозрачности 0 */
+		transform: translateY(-10px); /* Немного смещаем вверх */
+		transition: opacity 0.3s ease, transform 0.3s ease; /* Плавное появление */
+	}
+
+	.main-nav-list.active {
+		display: flex; /* Показываем меню */
+		opacity: 1; /* Делаем видимым */
+		transform: translateY(0); /* Возвращаем на место */
+	}
+
+	/* Затемнение фона */
+	.modal-overlay {
+		position: fixed; /* Фиксируем на экране */
+		top: 0;
+		left: 0;
+		width: 100%; /* Занимает всю ширину экрана */
+		height: 100%; /* Занимает всю высоту экрана */
+		background: rgba(0, 0, 0, 0.5); /* Полупрозрачный чёрный фон */
+		z-index: 999; /* Размещаем поверх основного контента */
+		opacity: 0; /* Невидим по умолчанию */
+		visibility: hidden; /* Скрыт по умолчанию */
+		transition: opacity 0.3s ease, visibility 0.3s ease; /* Плавное появление/исчезновение */
+	}
+
+	.modal-overlay.active {
+		opacity: 1; /* Делаем видимым */
+		visibility: visible; /* Показываем */
+	}
 }
