@@ -18,9 +18,8 @@ class PaySubscription(LoginRequiredMixin, View):
 
     def post(self, request):
         subscription_level = request.POST.get("level")
-        redirect_url = reverse("library:films")
         response = {
             "message": f"Подписка {subscription_level} успешно оплачена вы будете перенаправлены на главную страницу через 5 секунд",
-            "redirect_url": redirect_url,
+            "redirect_url": reverse("library:films"),
         }
         return JsonResponse(response)
