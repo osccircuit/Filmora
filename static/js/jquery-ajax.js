@@ -228,8 +228,11 @@ $(document).ready(function () {
                 // Через 7сек убираем сообщение
                 setTimeout(function () {
                     successMessage.fadeOut(400);
-                }, 7000);
+                }, 5000);
                 
+                setTimeout(function () {
+                    window.location.href=data.redirect_url;
+                }, 5000);
             },
             error: function (data) {
                 errorMessage.html(data.responseJSON.error);
