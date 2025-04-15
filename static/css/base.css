@@ -115,8 +115,9 @@ nav a {
 
 .header__hero {
 	padding: 2rem 0 9.6rem 0;
+	position: relative;
 }
-nav {
+.main-nav {
 	font-size: 2rem;
 	font-weight: 700;
 	display: flex;
@@ -130,6 +131,7 @@ nav {
 
 .logo {
 	height: 3rem;
+	display: block;
 }
 
 .main-nav-list {
@@ -137,6 +139,10 @@ nav {
 	display: flex;
 	gap: 3.2rem;
 	align-items: center;
+}
+
+.main-nav-list.active {
+	display: none; /* По умолчанию скрыто */
 }
 
 .main-nav-link:link,
@@ -167,6 +173,30 @@ nav {
 .nav-cta:hover,
 .nav-cta:active {
 	background-color: #082a29;
+}
+
+/* MOBILE */
+
+.btn-mobile-nav {
+	border: none;
+	background: none;
+	cursor: pointer;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 2rem;
+	z-index: 1000;
+
+	display: none;
+}
+
+.icon-mobile-nav {
+	font-size: 4.8rem;
+	color: #333;
+}
+
+.icon-mobile-nav[name='close'] {
+	display: none;
 }
 
 .section-hero {
@@ -871,18 +901,20 @@ nav {
 	font-weight: 500;
 }
 
-.nav-first-column {
-	justify-content: end;
+/* .nav-first-column {
+	justify-content: center;
 }
 
 .nav-second-column {
 	justify-content: end;
-}
+} */
 
 .footer-nav {
 	list-style: none;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-end;
+
 	gap: 2.4rem;
 }
 
