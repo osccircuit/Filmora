@@ -29,8 +29,12 @@
 
 		<section class="section-hero">
 			<header class="header__hero">
-				<nav class="container">
+				<nav class="container main-nav">
 					<img class="logo" src="/img/logo_filmora.svg" alt="Logo Filmora" />
+					<button class="btn-mobile-nav">
+						<ion-icon class="icon-mobile-nav" name="menu"></ion-icon>
+						<ion-icon class="icon-mobile-nav" name="close"></ion-icon>
+					</button>
 
 					<div>
 						<ul class="main-nav-list">
@@ -43,24 +47,27 @@
 				</nav>
 			</header>
 
-			<div class="container hero">
-				<div class="hero-text-box">
-					<h1 class="heading-primary">Filmora</h1>
+			<div class="modal-overlay">
+				<div class="container hero">
+					<div class="hero-text-box">
+						<h1 class="heading-primary">Filmora</h1>
 
-					<p class="hero-description">
-						Организуйте свою коллекцию фильмов с Filmora. Добавляйте,
-						редактируйте и исследуйте любимые фильмы в удобном цифровом
-						каталоге.
-						<!-- Filmora - это приложение, которое позволяет вам управлять вашей личной
+						<p class="hero-description">
+							Организуйте свою коллекцию фильмов с Filmora. Добавляйте,
+							редактируйте и исследуйте любимые фильмы в удобном цифровом
+							каталоге.
+							<!-- Filmora - это приложение, которое позволяет вам управлять вашей личной
 					библиотекой фильмов. Вы можете добавлять, редактировать и удалять
 					фильмы, а также просматривать информацию о них. -->
-					</p>
-					<div class="btn-box">
-						<a class="btn btn--full" href="#">Присоединиться</a>
+						</p>
 
-						<a class="btn btn--outline" href="#">Войти</a>
+						<div class="btn-box">
+							<a class="btn btn--full" href="#">Присоединиться</a>
+
+							<a class="btn btn--outline" href="#">Войти</a>
+						</div>
+						<div class="spool"></div>
 					</div>
-					<div class="spool"></div>
 				</div>
 			</div>
 		</section>
@@ -472,6 +479,41 @@
 
 		<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
-		<script src="/static/js/jquery-ajax.js"></script>
+
+		// Получаем элементы
+		<script>
+			const btnMobileNav = document.querySelector('.btn-mobile-nav')
+			const mainNavList = document.querySelector('.main-nav-list')
+			const menuIcon = document.querySelector('.icon-mobile-nav[name="menu"]')
+			const closeIcon = document.querySelector('.icon-mobile-nav[name="close"]')
+			const modalOverlay = document.querySelector('.modal-overlay') // Получаем затемнение
+			const body = document.body
+
+			// Добавляем обработчик клика на кнопку "бургер"
+			btnMobileNav.addEventListener('click', () => {
+				mainNavList.classList.toggle('active') // Переключаем меню
+				modalOverlay.classList.toggle('active') // Переключаем затемнение
+				body.classList.toggle('menu-open') // Блокируем прокрутку страницы
+
+				// Переключаем иконки
+				menuIcon.style.display = mainNavList.classList.contains('active')
+					? 'none'
+					: 'block'
+				closeIcon.style.display = mainNavList.classList.contains('active')
+					? 'block'
+					: 'none'
+			})
+
+			// Закрываем меню при клике на затемнение
+			modalOverlay.addEventListener('click', () => {
+				mainNavList.classList.remove('active') // Убираем меню
+				modalOverlay.classList.remove('active') // Убираем затемнение
+				body.classList.remove('menu-open') // Разблокируем прокрутку страницы
+
+				// Возвращаем иконки
+				menuIcon.style.display = 'block'
+				closeIcon.style.display = 'none'
+			})
+		</script>
 	</body>
 </html>
