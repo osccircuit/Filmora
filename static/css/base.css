@@ -369,8 +369,8 @@ nav a {
 /* SECTION HOWITWORKS */
 /* **************************** */
 
-.section-sta {
-	padding: 9.6rem 0;
+.how-section {
+	padding: 6.4rem 0 3.2rem 0;
 }
 
 .header-how {
@@ -470,7 +470,7 @@ nav a {
 /* **************************** */
 
 .section-cta {
-	padding: 9.6rem 0;
+	padding: 6.4rem 0;
 }
 
 .cta {

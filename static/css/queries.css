@@ -268,4 +268,96 @@ Instead, 1rem = 1em = 16px */
 	.visual-blocks-title strong {
 		font-size: 2.8rem;
 	}
+
+	.section-cta {
+		padding: 4.8rem 0;
+	}
+
+	.cta-text-box {
+		padding: 2.4rem;
+	}
+
+	.cta-title {
+		font-size: 1.6rem;
+		margin-bottom: 0.8rem;
+	}
+
+	.cta-text {
+		font-size: 1.4rem;
+	}
+
+	.btn-sta:link,
+	.btn-sta:visited {
+		margin-top: 2.4rem;
+		margin-left: 0;
+		padding: 1.2rem 2.4rem;
+	}
+
+	.cta-img-box {
+		height: 30rem;
+	}
+
+	.testimonials {
+		grid-template-columns: 1fr;
+	}
+
+	.testimonials-heading {
+		font-size: 2.4rem;
+	}
+
+	.testimonials-heading strong {
+		font-size: 3.6rem;
+	}
+
+	.gallery {
+		flex-wrap: wrap;
+	}
+
+	.section-priсing {
+		padding: 4.8rem 0;
+	}
+
+	.pricing-plan {
+		max-width: 100%;
+		padding: 3.2rem 3.2rem 4.8rem 3.2rem;
+	}
+
+	.priсe-text {
+		font-size: 1.6rem;
+		padding-bottom: 2.4rem;
+	}
+
+	.priсing-heading {
+		font-size: 1.8rem;
+		margin-bottom: 3.2rem;
+	}
+
+	.priсing-heading strong {
+		font-size: 2.4rem;
+	}
+
+	.plan-header {
+		margin-bottom: 3.2rem;
+	}
+
+	.plan-name {
+		font-size: 1.4rem;
+		margin-bottom: 1.6rem;
+	}
+
+	.plan-price {
+		font-size: 3.2rem;
+	}
+
+	.plan-price span {
+		font-size: 2.4rem;
+	}
+
+	.list-item {
+		font-size: 1.4rem;
+	}
+
+	.list-icon {
+		font-size: 1.8rem;
+	}
 }
