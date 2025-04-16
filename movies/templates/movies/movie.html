@@ -33,3 +33,9 @@
     </div>
 </div>
 {% endblock content %}
+
+{% block page_script %}
+<script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/locale/ru/cdn.min.js"></script>
+<script src="{% static "js/format-time.js" %}"></script>
+{% endblock page_script %}

@@ -12,7 +12,7 @@
                     {% endif %}
                 </div>
                 <span class="username">{{ review.user.username }}</span>
-                <span class="date">{{ review.added_at|date:"d.m.Y H:i" }}</span>
+                <span class="date">{{ review.added_at|date:"c" }}</span>
             </div>
             <div class="review-rating">
                 <!-- Отображение оценки в виде звезд -->
