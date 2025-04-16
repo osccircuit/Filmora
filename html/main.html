@@ -28,7 +28,7 @@
 		</div>
 
 		<section class="section-hero">
-			<header class="header__hero nav-open">
+			<header class="header__hero">
 				<nav class="container main-nav">
 					<img class="logo" src="/img/logo_filmora.svg" alt="Logo Filmora" />
 
@@ -40,11 +40,11 @@
 							</li>
 						</ul>
 					</div>
+					<button class="btn-mobile-nav">
+						<ion-icon class="icon-mobile-nav" name="menu"></ion-icon>
+						<ion-icon class="icon-mobile-nav" name="close"></ion-icon>
+					</button>
 				</nav>
-				<button class="btn-mobile-nav">
-					<ion-icon class="icon-mobile-nav" name="menu"></ion-icon>
-					<ion-icon class="icon-mobile-nav" name="close"></ion-icon>
-				</button>
 			</header>
 
 			<div class="container hero">
@@ -477,40 +477,26 @@
 
 		<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
-
-		// Получаем элементы
 		<script>
-			const btnMobileNav = document.querySelector('.btn-mobile-nav')
-			const mainNavList = document.querySelector('.main-nav-list')
-			const menuIcon = document.querySelector('.icon-mobile-nav[name="menu"]')
-			const closeIcon = document.querySelector('.icon-mobile-nav[name="close"]')
-			const modalOverlay = document.querySelector('.modal-overlay') // Получаем затемнение
-			const body = document.body
+			document.addEventListener('DOMContentLoaded', () => {
+				const btnMobileNav = document.querySelector('.btn-mobile-nav')
+				const navBlock = document.querySelector('.main-nav-block')
+				const menuIcon = document.querySelector('.icon-mobile-nav[name="menu"]')
+				const closeIcon = document.querySelector(
+					'.icon-mobile-nav[name="close"]'
+				)
 
-			// Добавляем обработчик клика на кнопку "бургер"
-			btnMobileNav.addEventListener('click', () => {
-				mainNavList.classList.toggle('active') // Переключаем меню
-				modalOverlay.classList.toggle('active') // Переключаем затемнение
-				body.classList.toggle('menu-open') // Блокируем прокрутку страницы
-
-				// Переключаем иконки
-				menuIcon.style.display = mainNavList.classList.contains('active')
-					? 'none'
-					: 'block'
-				closeIcon.style.display = mainNavList.classList.contains('active')
-					? 'block'
-					: 'none'
-			})
-
-			// Закрываем меню при клике на затемнение
-			modalOverlay.addEventListener('click', () => {
-				mainNavList.classList.remove('active') // Убираем меню
-				modalOverlay.classList.remove('active') // Убираем затемнение
-				body.classList.remove('menu-open') // Разблокируем прокрутку страницы
-
-				// Возвращаем иконки
+				// Устанавливаем начальное состояние иконок
 				menuIcon.style.display = 'block'
 				closeIcon.style.display = 'none'
+
+				// Обработчик клика на кнопку-бургер
+				btnMobileNav.addEventListener('click', () => {
+					navBlock.classList.toggle('open')
+					const isOpen = navBlock.classList.contains('open')
+					menuIcon.style.display = isOpen ? 'none' : 'block'
+					closeIcon.style.display = isOpen ? 'block' : 'none'
+				})
 			})
 		</script>
 	</body>
