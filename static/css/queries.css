@@ -2,7 +2,7 @@
 Instead, 1rem = 1em = 16px */
 
 /* **************************** */
-/* BELOW 1300px (Smaller desktops) */
+/* BELOW 1312px (Smaller desktops) */
 /* **************************** */
 
 @media (max-width: 82em) {
@@ -10,6 +10,10 @@ Instead, 1rem = 1em = 16px */
 		max-width: 120rem;
 	}
 }
+
+/* **************************** */
+/* BELOW 1200px  */
+/* **************************** */
 
 @media (max-width: 75em) {
 	html {
@@ -22,6 +26,10 @@ Instead, 1rem = 1em = 16px */
 		gap: 1.2rem;
 	}
 }
+
+/* **************************** */
+/* BELOW 1008px  */
+/* **************************** */
 
 @media (max-width: 63em) {
 	.grid {
@@ -95,70 +103,134 @@ Instead, 1rem = 1em = 16px */
 		margin-bottom: 1.8rem;
 	}
 
-	/* MOBILE NAVIGATION */
-	.header__hero {
-		padding: 2rem 0;
-		text-align: center;
-	}
+	/* === MOBILE NAVIGATION CLEAN VERSION === */
 
-	/* .logo {
-		margin-bottom: 3rem;
-	} */
+	.main-nav {
+		position: relative;
+		align-items: center;
+		justify-content: space-between;
+	}
 
 	.btn-mobile-nav {
 		display: block;
+		background: none;
+		border: none;
+		cursor: pointer;
+		z-index: 200;
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
 	}
 
+	.icon-mobile-nav[name='menu'],
+	.icon-mobile-nav[name='close'] {
+		font-size: 3.2rem;
+		color: #fff;
+		display: none;
+		transition: all 0.3s;
+	}
+
+	/* Показываем только иконку меню по умолчанию */
+	.icon-mobile-nav[name='menu'] {
+		display: block;
+	}
+
+	/* === ВЫПАДАЮЩЕЕ МЕНЮ СПРАВА === */
 	.main-nav-block {
-		background-color: rgba(116, 115, 115, 0.97);
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: 15%;
-		height: 100%;
+		background-color: #333; /* сплошной тёмный фон */
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		padding: 1rem 0;
+		width: 220px;
 
-		opacity: 0;
-	}
-
-	.nav-open .main-nav-block {
-		opacity: 1;
-	}
-
-	.main-nav-list {
+		display: none;
 		flex-direction: column;
-		align-self: end;
-		gap: 0;
+		box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.3);
+		z-index: 150;
+
+		animation: none;
+	}
+
+	.main-nav-block.open {
+		display: flex;
+		animation: dropdownFromTop 0.4s ease-out forwards;
+	}
+
+	/* Анимация выпадания сверху */
+	@keyframes dropdownFromTop {
+		from {
+			transform: translateY(-1rem);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	/* === ЯЧЕЙКИ-МЕНЮ С БОРДЕРАМИ === */
+	.main-nav-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 	}
 
 	.main-nav-link:link,
 	.main-nav-link:visited {
-		font-size: 1.4rem;
-		padding: 1.6rem;
-		background: none;
-		border-radius: none;
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-size: 1.6rem;
+		font-weight: 600;
+		text-decoration: none;
+		color: #fff;
+		padding: 1.2rem 1.6rem;
+
+		border-top: 1px solid #555;
+		border-bottom: 1px solid #555;
+
+		transition: background-color 0.3s;
 	}
 
-	/* .icon-mobile-nav {
-		font-size: 2.4rem;
+	.main-nav-link:first-child {
+		border-top-left-radius: 6px;
+		border-top-right-radius: 6px;
+	}
 
-		transition: opacity 0.3s ease;
-	} */
+	.main-nav-link:last-child {
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 6px;
+	}
 
-	/* .icon-mobile-nav[name='menu'] {
-		display: block;
-	} */
+	.main-nav-link:hover,
+	.main-nav-link:active {
+		background-color: #43a694;
+	}
+}
 
-	/* .icon-mobile-nav[name='close'] {
-		display: none;
-	} */
+/* **************************** */
+/* BELOW 750px  */
+/* **************************** */
 
-	/* .main-nav-list.active {
-		display: flex;
-		opacity: 1;
-		transform: translateY(0);
-	} */
+@media (max-width: 63em) {
+	.grid--2-cols {
+		grid-template-columns: 1fr;
+		justify-items: center;
+	}
+
+	.pricing-plan {
+		max-width: 50%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.pricing-plan-prem::after {
+		font-size: 1.2rem;
+		top: 5%;
+		right: -12%;
+		padding: 0.5rem 6rem 0.3rem;
+	}
 }
