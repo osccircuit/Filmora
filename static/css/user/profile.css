@@ -80,3 +80,46 @@
 .btn:hover {
     background-color: #0056b3;
 }
+
+.subscription-card {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.subscription-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.subscription-status {
+    margin: 15px 0;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.subscription-dates {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.date-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.date-item span {
+    color: #666;
+}
