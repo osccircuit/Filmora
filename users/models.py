@@ -7,7 +7,7 @@ class User(AbstractUser):
     """Refactor user model"""
 
     class TypeOfSub:
-        subs = {"FR": 'FREE', "ST": "STANDARD", "PR": "PREMIUM"}
+        subs = {"FREE": 'FREE', "STANDARD": "STANDARD", "PREMIUM": "PREMIUM"}
 
         @classmethod
         def get_sub_choices(cls):
@@ -15,7 +15,7 @@ class User(AbstractUser):
 
         @classmethod
         def get_default_choice(cls):
-            return cls.subs['FR']
+            return cls.subs['FREE']
 
     image = models.ImageField(
         upload_to="users_images", blank=True, null=True, verbose_name="Аватар"

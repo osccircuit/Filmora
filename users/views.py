@@ -16,6 +16,7 @@ from django.views.generic import CreateView, TemplateView, UpdateView
 from movies.models import Movie
 import reviews
 from users.models import UserMovie
+from users.models import User
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 import copy
 
@@ -57,12 +58,29 @@ class LogoutView(LoginRequiredMixin, View):
         )
         auth.logout(request)
         return HttpResponseRedirect(reverse("main:index"))
-    
+
+
 class ProfileView(LoginRequiredMixin, UpdateView):
     """Profile page view."""
 
     template_name = "users/profile.html"
     form_class = ProfileForm
+
+    def select_context_from_type_sub(self, type_of_sub):
+        addict_context = {}
+        if type_of_sub == User.TypeOfSub.get_default_choice():
+            addict_context["status_of_sub"] = "Не активна"
+            addict_context["status_of_sub_class"] = "deactive"
+            addict_context["status_of_sub_message"] = (
+                "Оформите подписку чтобы открыть все функции"
+            )
+        else:
+            addict_context["status_of_sub"] = "Активна"
+            addict_context["status_of_sub_class"] = "active"
+            addict_context["status_of_sub_message"] = (
+                f"Ваша подписка {type_of_sub} активирована"
+            )
+        return addict_context
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -76,8 +94,10 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update(self.select_context_from_type_sub(context['user'].type_of_sub))
         context["title"] = "Профиль - Filmora"
         return context
+
 
 
 class RegistrationView(CreateView):
@@ -110,15 +130,15 @@ class RegistrationView(CreateView):
         )
         return HttpResponseRedirect(self.get_success_url())
 
+
 class ButtonCollectionView(LoginRequiredMixin, View):
     """Handle add movie in collection methods"""
 
     def post(self, request):
         """Get ajax data from frontend and handling add movie to collection"""
-        movie_id = self.request.POST.get('movie_id')
+        movie_id = self.request.POST.get("movie_id")
         if movie_id is None:
             return JsonResponse({"error": "Не передан ID фильма."}, status=400)
-
 
         movie = Movie.objects.get(id=movie_id)
         UserMovie.objects.create(user=request.user, movie=movie, review=None)
@@ -130,9 +150,9 @@ class ButtonCollectionView(LoginRequiredMixin, View):
         )
 
         review_form = render_to_string(
-            "includes/add_review.html", 
-            {"review_not_add": True, "movie": movie, 'user_movie': True},
-            request
+            "includes/add_review.html",
+            {"review_not_add": True, "movie": movie, "user_movie": True},
+            request,
         )
 
         response_data = {
@@ -142,12 +162,14 @@ class ButtonCollectionView(LoginRequiredMixin, View):
         }
         return JsonResponse(response_data)
 
+
 class ButtonDeleteView(LoginRequiredMixin, View):
     """Handle delete movie from collection methods"""
+
     paginator = None
     current_page = 1
     paginate_by = 3
-        
+
     def post(self, request):
         """Delete movie from collection POST"""
 
@@ -156,12 +178,18 @@ class ButtonDeleteView(LoginRequiredMixin, View):
         if movie_id is None:
             return JsonResponse({"error": "Не передан ID фильма."}, status=400)
 
-        all_user_movie_info = UserMovie.objects.filter(movie__id=movie_id).select_related('movie')
-        this_user_movie = all_user_movie_info.filter(user=request.user).get(movie__id=movie_id)
+        all_user_movie_info = UserMovie.objects.filter(
+            movie__id=movie_id
+        ).select_related("movie")
+        this_user_movie = all_user_movie_info.filter(user=request.user).get(
+            movie__id=movie_id
+        )
         original_movie = all_user_movie_info.filter(user=request.user).first().movie
         this_user_movie.delete()
 
-        self.paginator = Paginator(all_user_movie_info.exclude(user=request.user), self.paginate_by)
+        self.paginator = Paginator(
+            all_user_movie_info.exclude(user=request.user), self.paginate_by
+        )
 
         button_delete = render_to_string(
             "includes/add_to_collect_btn.html",
@@ -171,13 +199,14 @@ class ButtonDeleteView(LoginRequiredMixin, View):
 
         review_form = render_to_string(
             "includes/add_review.html",
-            {"review_not_add": False, 'user_movie': False, "movie": original_movie},
+            {"review_not_add": False, "user_movie": False, "movie": original_movie},
             request,
         )
 
         users_reviews = render_to_string(
-            "includes/view_reviews.html", {"reviews": self.paginator.page(self.current_page)},
-            request
+            "includes/view_reviews.html",
+            {"reviews": self.paginator.page(self.current_page)},
+            request,
         )
 
         response_data = {

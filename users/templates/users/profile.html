@@ -58,22 +58,21 @@
             </form>
             <!-- Добавляем после формы, перед закрывающими div -->
             <div class="subscription-card">
-                <h3>Статус подписки</h3>
+                <h3>Статус подписки {{ user.type_of_sub }}</h3>
                 <div class="subscription-status">
-                    <span class="status-badge active">Активна</span>
-                    <p>Подписка успешно оплачена</p>
+                    <span class="status-badge {{ status_of_sub_class }}">{{ status_of_sub }}</span>
+                    <p>{{ status_of_sub_message }}</p>
                 </div>
-                <div class="subscription-dates">
-                    <div class="date-item">
-                        <span>Дата начала:</span>
-                        <strong>01.05.2024</strong>
+                {% if user.type_of_sub != "FREE" %}
+                    <div class="subscription-dates">
+                        <div class="date-item">
+                            <span>Действует до:</span>
+                            <strong>{{ user.date_to_pay }}</strong>
+                        </div>
                     </div>
-                    <div class="date-item">
-                        <span>Действует до:</span>
-                        <strong>31.05.2024</strong>
-                    </div>
-                </div>
-                <a href="{% url 'subscription:subscription_registration' %}" class="btn">Оплатить подписку</a>
+                {% else %}
+                    <a href="{% url 'subscription:subscription_registration' %}" class="btn">Оформить подписку</a>
+                {% endif %}
             </div>
     </div>
 </div>
