@@ -20,7 +20,7 @@ venv/
 media/
 
 # Игнорировать фикстуры
-fixtures/
+# fixtures/
 
 # Игнорировать файлы IDE
 .idea/
