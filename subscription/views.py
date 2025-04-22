@@ -23,3 +23,12 @@ class PaySubscription(LoginRequiredMixin, View):
             "redirect_url": reverse("library:films"),
         }
         return JsonResponse(response)
+
+class VariantSubscriptionView(LoginRequiredMixin, TemplateView):
+    template_name = "subscription/variant_sub.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Выбор подписки"
+        return context
+
