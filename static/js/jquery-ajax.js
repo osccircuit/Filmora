@@ -209,6 +209,29 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", ".pay-sub", function (e) {
+        e.preventDefault();
+
+        var url = $(this).data("url");
+        var level_sub = $(this).data("level-sub");
+        console.log(level_sub);
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                level_sub: level_sub,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                setTimeout(function () {
+                    window.location.href=data.redirect_url;
+                }, 5);
+            },
+            error: function () {
+            },
+        });
+    });
+    
     $(document).on("click", ".pay-subscription", function (e) {
         e.preventDefault();
 

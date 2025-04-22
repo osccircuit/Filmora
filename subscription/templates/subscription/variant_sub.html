@@ -19,7 +19,10 @@
                     <li>✓ Реклама</li>
                     <li>✗ Поддержка 24/7</li>
                 </ul>
-                <button class="select-btn">Выбрать</button>
+                <button class="select-btn pay-sub" data-level-sub="standard" data-url="{% url "subscription:subscription_variant" %}">
+                    {% csrf_token %}
+                    Выбрать
+                </button>
             </div>
             <div class="plan standard-plan highlighted">
                 <h2>Standard</h2>
@@ -30,7 +33,10 @@
                     <li>✓ Без рекламы</li>
                     <li>✓ Поддержка 24/7</li>
                 </ul>
-                <button class="select-btn primary">Выбрать</button>
+                <button class="select-btn primary pay-sub" data-level-sub="premium" data-url="{% url "subscription:subscription_variant" %}">
+                    {% csrf_token %}
+                    Выбрать
+                </button>
             </div>
         </div>
     </div>
