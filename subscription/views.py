@@ -27,11 +27,10 @@ class PaySubscription(LoginRequiredMixin, View):
 
 class VariantSubscriptionView(LoginRequiredMixin, TemplateView):
     template_name = "subscription/variant_sub.html"
-    sub_level = ''
 
     def post(self, request, *args, **kwargs):
-        self.sub_level = request.POST.get('level_sub')
-        self.request.session['pending_sub'] = self.sub_level
+        sub_level = request.POST.get('level_sub')
+        self.request.session['pending_sub'] = sub_level
         response = {
             "redirect_url": reverse("subscription:subscription_registration"),
         }
