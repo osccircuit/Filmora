@@ -17,6 +17,10 @@ class User(AbstractUser):
         def get_default_choice(cls):
             return cls.subs['FREE']
 
+        @classmethod
+        def get_list_choices(cls):
+            return [sub for k, sub in cls.subs.items()]
+
     image = models.ImageField(
         upload_to="users_images", blank=True, null=True, verbose_name="Аватар"
     )

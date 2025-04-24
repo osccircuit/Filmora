@@ -3,6 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from users.models import User
 
 
 class OrderSubscriptionView(LoginRequiredMixin, TemplateView):
@@ -26,7 +27,7 @@ class PaySubscription(LoginRequiredMixin, View):
     def post(self, request):
         subscription_level = request.session.get('pending_sub')
         
-        if subscription_level in ['premium', 'standard']:
+        if subscription_level in User.TypeOfSub.get_list_choices():
             del self.request.session['pending_sub']
             response = {
                 "message": f"Подписка {subscription_level} успешно оплачена вы будете перенаправлены на главную страницу через 5 секунд",

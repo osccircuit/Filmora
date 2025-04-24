@@ -19,7 +19,7 @@
                     <li>✓ Реклама</li>
                     <li>✗ Поддержка 24/7</li>
                 </ul>
-                <button class="select-btn pay-sub" data-level-sub="standard" data-url="{% url "subscription:subscription_variant" %}">
+                <button class="select-btn pay-sub" data-level-sub="STANDARD" data-url="{% url "subscription:subscription_variant" %}">
                     {% csrf_token %}
                     Выбрать
                 </button>
@@ -33,7 +33,7 @@
                     <li>✓ Без рекламы</li>
                     <li>✓ Поддержка 24/7</li>
                 </ul>
-                <button class="select-btn primary pay-sub" data-level-sub="premium" data-url="{% url "subscription:subscription_variant" %}">
+                <button class="select-btn primary pay-sub" data-level-sub="PREMIUM" data-url="{% url "subscription:subscription_variant" %}">
                     {% csrf_token %}
                     Выбрать
                 </button>
