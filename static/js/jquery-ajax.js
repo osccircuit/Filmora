@@ -262,8 +262,8 @@ $(document).ready(function () {
                 errorMessage.fadeIn(400);
                 // Через 7сек убираем сообщение
                 setTimeout(function () {
-                    errorMessage.fadeOut(400);
-                }, 7000);
+                    window.location.href=data.responseJSON.redirect_url;
+                }, 2000);
                 // console.log("Отзыв или оценка уже есть");
             },
         });

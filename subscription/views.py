@@ -26,12 +26,16 @@ class PaySubscription(LoginRequiredMixin, View):
     def post(self, request):
         subscription_level = request.session.get('pending_sub')
         
-        del self.request.session['pending_sub']
-        response = {
-            "message": f"Подписка {subscription_level} успешно оплачена вы будете перенаправлены на главную страницу через 5 секунд",
-            "redirect_url": reverse("library:films"),
-        }
-        return JsonResponse(response)
+        if subscription_level in ['premium', 'standard']:
+            del self.request.session['pending_sub']
+            response = {
+                "message": f"Подписка {subscription_level} успешно оплачена вы будете перенаправлены на главную страницу через 5 секунд",
+                "redirect_url": reverse("library:films"),
+            }
+            return JsonResponse(response)
+        return JsonResponse({"error": "Такого варианта подписки не существует.",
+                             "redirect_url": reverse("library:films")}, status=400)
+                
 
 class VariantSubscriptionView(LoginRequiredMixin, TemplateView):
     template_name = "subscription/variant_sub.html"
