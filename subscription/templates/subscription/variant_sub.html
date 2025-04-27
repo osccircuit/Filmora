@@ -76,7 +76,10 @@
                 </li>
             </ul>
             <div class="plan-sing-up">
-                <a class="btn-price" href="#">Подключить стандарт</a>
+                <a class="btn-price pay-sub" href="#" data-level-sub="STANDARD" data-url="{% url "subscription:subscription_variant" %}">
+                    {% csrf_token %} 
+                    Подключить стандарт
+                </a>
             </div>
         </div>
 
@@ -139,44 +142,12 @@
                 </li>
             </ul>
             <div class="plan-sing-up">
-                <a class="btn-price btn-price-secondary" href="#"
-                    >Подключить премиум</a
-                >
+                <a class="btn-price btn-price-secondary pay-sub" href="#" data-level-sub="PREMIUM" data-url="{% url "subscription:subscription_variant" %}">
+                    {% csrf_token %} 
+                    Подключить премиум
+                    </a>
             </div>
         </div>
     </div>
 </section>
-    {% comment %} <div class="subscription-container">
-        <h1>Выберите подписку</h1>
-        <div class="subscription-plans">
-            <div class="plan free-plan">
-                <h2>Free</h2>
-                <p class="price">$0<span>/месяц</span></p>
-                <ul class="features">
-                    <li>✓ Базовые функции</li>
-                    <li>✓ Ограниченный доступ</li>
-                    <li>✓ Реклама</li>
-                    <li>✗ Поддержка 24/7</li>
-                </ul>
-                <button class="select-btn pay-sub" data-level-sub="STANDARD" data-url="{% url "subscription:subscription_variant" %}">
-                    {% csrf_token %}
-                    Выбрать
-                </button>
-            </div>
-            <div class="plan standard-plan highlighted">
-                <h2>Standard</h2>
-                <p class="price">$9.99<span>/месяц</span></p>
-                <ul class="features">
-                    <li>✓ Все функции Free</li>
-                    <li>✓ Полный доступ</li>
-                    <li>✓ Без рекламы</li>
-                    <li>✓ Поддержка 24/7</li>
-                </ul>
-                <button class="select-btn primary pay-sub" data-level-sub="PREMIUM" data-url="{% url "subscription:subscription_variant" %}">
-                    {% csrf_token %}
-                    Выбрать
-                </button>
-            </div>
-        </div>
-    </div> {% endcomment %}
 {% endblock content %}
