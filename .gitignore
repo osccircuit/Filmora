@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 
+# Игнорировать dotenv
+.env
+
 # Игнорировать все файлы в migrations, кроме __init__.py
 Filmora/migrations/*
 !Filmora/migrations/__init__.py
