@@ -21,6 +21,15 @@ class User(AbstractUser):
         def get_list_choices(cls):
             return [sub for k, sub in cls.subs.items()]
 
+        @classmethod
+        def get_deltatime_for_sub(cls, type_sub):
+            if type_sub in cls.subs.keys():
+                if type_sub == cls.subs['STANDARD']:
+                    return 60
+                elif type_sub == cls.subs['PREMIUM']:
+                    return 90
+            return None
+
     image = models.ImageField(
         upload_to="users_images", blank=True, null=True, verbose_name="Аватар"
     )
