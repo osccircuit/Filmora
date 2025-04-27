@@ -16,39 +16,49 @@
     
     <h1>{{ heading }}</h1>
     <p>{{ text }}</p>
-    <div class="filter">
-        <label for="genre-select">Выберите жанр:</label>
-        <select id="genre-select" onchange="filterMovies()">
-            {% for genre in genres %}
-            <option value="{% if is_user_movies %}
-            {% url "library:user_movies" genre.slug %}
-            {% else %}
-            {% url "library:films" genre.slug %}
-            {% endif %}" {% if selected_genre == genre.slug %}selected{% endif %}>{{ genre.name.capitalize }}</option>
-            {% endfor %}
-            <!-- Добавьте другие жанры по необходимости -->
-        </select>
-    </div>
-    <br>
-    <div class="movies-grid">
-        {% for movie in movies %}
-        <div class="movie-card">
-            <a href="{% url "library:concrete_movie" movie.slug %}">
-                <div class="movie-image">
-                    <img src="{{ movie.image }}" alt="{{ movie.title }}">
-                </div>
-                <div class="movie-info">
-                    <div class="movie-title">{{ movie.title }}  </div>
-                    {% if movie.genre %}
-                        <div class="movie-description">{{ movie.genre }}</div>
-                    {% endif %}
-                    {% if movie.year %}
-                        <div class="movie-description">{{ movie.year }}</div>
-                    {% endif %}
-                </div>
-            </a>
+
+    {% if request.GET.q %}
+        <h2>Результаты поиска по запросу "{{ request.GET.q }}"</h2>
+    {% else %}
+        <div class="filter">
+            <label for="genre-select">Выберите жанр:</label>
+            <select id="genre-select" onchange="filterMovies()">
+                {% for genre in genres %}
+                <option value="{% if is_user_movies %}
+                {% url "library:user_movies" genre.slug %}
+                {% else %}
+                {% url "library:films" genre.slug %}
+                {% endif %}" {% if selected_genre == genre.slug %}selected{% endif %}>{{ genre.name.capitalize }}</option>
+                {% endfor %}
+                <!-- Добавьте другие жанры по необходимости -->
+            </select>
         </div>
-        {% endfor %}
+    {% endif %}
+    <br>
+
+    <div class="movies-grid">
+        {% if request.GET.q and not movies %}
+            <h3>По вашему запросу ничего не найдено</h3>
+        {% else %}
+            {% for movie in movies %}
+            <div class="movie-card">
+                <a href="{% url "library:concrete_movie" movie.slug %}">
+                    <div class="movie-image">
+                        <img src="{{ movie.image }}" alt="{{ movie.title }}">
+                    </div>
+                    <div class="movie-info">
+                        <div class="movie-title">{{ movie.title }}  </div>
+                        {% if movie.genre %}
+                            <div class="movie-description">{{ movie.genre }}</div>
+                        {% endif %}
+                        {% if movie.year %}
+                            <div class="movie-description">{{ movie.year }}</div>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
     <br>
     <div class="pagination">
