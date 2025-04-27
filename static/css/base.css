@@ -5,6 +5,10 @@ nav {
     background-color: #f8f8f8;
     padding: 10px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
 }
 nav a {
     margin: 0 15px;
@@ -13,4 +17,8 @@ nav a {
 }
 .content {
     padding: 20px;
+}
+.search-form {
+    position: absolute;
+    right: 20px;
 }

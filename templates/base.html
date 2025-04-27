@@ -25,6 +25,10 @@
         {% if user.is_staff or user.is_admin %}
             <a href="{% url "admin:index" %}">Админ Панель</a>
         {% endif %}
+        <form action="{% url "library:movies_search" %}" class="search-form" method="get" role="search">
+            <input type="search" name="q" placeholder="Строка поиска" id="">
+            <button type="submit">Поиск</button>
+        </form>
     </nav>
     {% include "includes/notifications.html" %}
     {% block content %}{% endblock content %}

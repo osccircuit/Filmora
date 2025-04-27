@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView
 from movies.mixins import MovieMixin
 from movies.models import Genre, Movie
+from movies.utils import QSearch
 from users.models import UserMovie
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
@@ -17,9 +18,13 @@ class MovieView(MovieMixin, LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         self.slug = self.kwargs.get("slug")
-        if self.slug == "all" or self.slug is None:
+        query = self.request.GET.get("q")
+        if self.slug == "all" or self.slug is None and query is None:
             # pylint: disable=no-member
-            movies = Movie.objects.all().order_by("-id")  # type: ignore
+            movies = Movie.objects.all().order_by("-id") 
+        elif query:
+            q_search = QSearch(query)
+            movies = q_search.get_search_queryset()
         else:
             # pylint: disable=no-member
             movies = Movie.objects.filter(genre__slug=self.slug)  # type: ignore
