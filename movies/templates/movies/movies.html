@@ -8,6 +8,12 @@
 
 {% block content %}
 <div class="content">
+
+    <form action="{% url "library:movies_search" %}" class="search-form" method="get" role="search">
+        <input type="search" name="q" placeholder="Найди любой фильм" id="">
+        <button type="submit">Поиск</button>
+    </form>
+    
     <h1>{{ heading }}</h1>
     <p>{{ text }}</p>
     <div class="filter">
