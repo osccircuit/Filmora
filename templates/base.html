@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav>
-        <a href="{% url "library:films" %}">Главная</a>
+        <a href="{% url "library:films" %}">Общая фильмотека</a>
         <a href="{% url "library:user_movies" %}">Моя Фильмотека</a>
         <a href="{% url "main:about" %}">О нас</a>
         {% if user.is_authenticated %}
