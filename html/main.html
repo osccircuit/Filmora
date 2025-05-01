@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="/static/css/user/registration.css" />
 
 		<!-- <link rel="stylesheet" href="/static/css/index.css" />
-		<link rel="stylesheet" href="/static/css/user/notifications.css" />
+		<link rel="stylesheet" href="/static/css/user/notifications.css" /> -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
@@ -39,7 +39,9 @@
 						<ul class="main-nav-list">
 							<li><a class="main-nav-link" href="#">О нас</a></li>
 							<li>
-								<a class="main-nav-link nav-cta" href="#"> Присоединиться</a>
+								<a class="main-nav-link nav-cta" href="registration.html">
+									Присоединиться</a
+								>
 							</li>
 						</ul>
 					</div>
@@ -64,7 +66,7 @@
 					</p>
 
 					<div class="btn-box">
-						<a class="btn btn--full" href="#">Присоединиться</a>
+						<a class="btn btn--full" href="registration.html">Присоединиться</a>
 
 						<a class="btn btn--outline" href="#">Войти</a>
 					</div>
@@ -144,7 +146,7 @@
 								наполняют жизнь новым смыслом. Позвольте инновациям сделать вашу
 								реальность удобнее, эффективнее и счастливее.
 							</p>
-							<a class="btn-sta" href="#">Присоединиться</a>
+							<a class="btn-sta" href="registration.html">Присоединиться</a>
 						</div>
 						<div
 							class="cta-img-box"
@@ -480,27 +482,9 @@
 
 		<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const btnMobileNav = document.querySelector('.btn-mobile-nav')
-				const navBlock = document.querySelector('.main-nav-block')
-				const menuIcon = document.querySelector('.icon-mobile-nav[name="menu"]')
-				const closeIcon = document.querySelector(
-					'.icon-mobile-nav[name="close"]'
-				)
+		
+		<script src="/static/js/script.js"></script>
 
-				// Устанавливаем начальное состояние иконок
-				menuIcon.style.display = 'block'
-				closeIcon.style.display = 'none'
-
-				// Обработчик клика на кнопку-бургер
-				btnMobileNav.addEventListener('click', () => {
-					navBlock.classList.toggle('open')
-					const isOpen = navBlock.classList.contains('open')
-					menuIcon.style.display = isOpen ? 'none' : 'block'
-					closeIcon.style.display = isOpen ? 'block' : 'none'
-				})
-			})
-		</script>
+		
 	</body>
 </html>

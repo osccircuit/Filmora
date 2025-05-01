@@ -5,14 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/static/css/base.css" />
 		<link rel="stylesheet" href="/static/css/queries.css" />
+		<link rel="stylesheet" href="/static/css/style.css" />
 		<link rel="stylesheet" href="/static/css/user/notifications.css" />
 
 		<link rel="stylesheet" href="/static/css/user/registration.css" />
 
 		<!-- <link rel="stylesheet" href="/static/css/index.css" />
-		<link rel="stylesheet" href="/static/css/user/notifications.css" />
+		<link rel="stylesheet" href="/static/css/user/notifications.css" /> -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
@@ -37,9 +38,8 @@
 
 					<div class="main-nav-block">
 						<ul class="main-nav-list">
-                            
-                            <li><a class="main-nav-link" href="#">Главная</a></li>
-                            <li><a class="main-nav-link" href="#">Фильмотека</a></li>
+							<li><a class="main-nav-link" href="main.html">Главная</a></li>
+							<li><a class="main-nav-link" href="#">Фильмотека</a></li>
 							<li><a class="main-nav-link" href="#">О нас</a></li>
 							<li><a class="main-nav-link" href="#">Войти</a></li>
 							<li>
@@ -52,54 +52,131 @@
 						<ion-icon class="icon-mobile-nav" name="close"></ion-icon>
 					</button>
 				</nav>
+				<div class="registration-form">
+					<div class="registration-container">
+						<h2>Регистрация</h2>
+						<form action="/user/registration/" method="post">
+							<input
+								type="hidden"
+								name="csrfmiddlewaretoken"
+								value="FyJ6WqZ3rKeOzfMCO2Bj5elZyWpkMozOGkkzyeag1SHbJSrVn198k4ezmCkGVLRs"
+							/>
+							<div class="form-group">
+								<label for="id_username">Имя пользователя</label>
+								<input
+									type="text"
+									value=""
+									id="id_username"
+									name="username"
+									required
+								/>
+							</div>
+							<div class="form-group">
+								<label for="id_email">Электронная почта</label>
+								<input
+									type="email"
+									value=""
+									id="id_email"
+									name="email"
+									required
+								/>
+							</div>
+							<div class="form-group">
+								<label for="id_password1">Пароль</label>
+								<input
+									type="password"
+									value=""
+									id="id_password1"
+									name="password1"
+									required
+								/>
+							</div>
+							<div class="form-group">
+								<label for="id_password2">Подтвердите пароль</label>
+								<input
+									type="password"
+									value=""
+									id="id_password2"
+									name="password2"
+									required
+								/>
+							</div>
+							<button type="submit">Зарегистрироваться</button>
+						</form>
+					</div>
+				</div>
 			</header>
 
-
-    
-    
-
-
-
-
-    <!-- <div class="notifications">
+			<!-- <div class="notifications">
         <div id="jq-notification" class="notification success" role="alert">
         </div>
         <div id="jq-notification-error" class="notification error" role="alert">
         </div>
     </div>  -->
+		</section>
 
-    
-<div class="content">
-    <div class="registration-container">
-        <h2>Регистрация</h2>
-        <form action="/user/registration/" method="post">
-            <input type="hidden" name="csrfmiddlewaretoken" value="FyJ6WqZ3rKeOzfMCO2Bj5elZyWpkMozOGkkzyeag1SHbJSrVn198k4ezmCkGVLRs">
-            <div class="form-group">
-                <label for="id_username">Имя пользователя</label>
-                <input type="text" value="" id="id_username" name="username" required>
-                
-            </div>
-            <div class="form-group">
-                <label for="id_email">Электронная почта</label>
-                <input type="email" value="" id="id_email" name="email" required>
-                
-            </div>
-            <div class="form-group">
-                <label for="id_password1">Пароль</label>
-                <input type="password" value="" id="id_password1" name="password1" required>
-                
-            </div>
-            <div class="form-group">
-                <label for="id_password2">Подтвердите пароль</label>
-                <input type="password" value="" id="id_password2" name="password2" required>
-                
-            </div>
-            <button type="submit">Зарегистрироваться</button>
-        </form>
-    </div>
-</div>
+		<footer class="footer">
+			<div class="container grid grig-footer">
+				<div class="logo-col">
+					<p>
+						<svg
+							class="logo-testimonials logo-footer"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 914 168"
+						>
+							<path
+								fill="#083a30"
+								d="M51.824 62.608V75.76H24.368v14.208h20.544v12.768H24.368V130H7.952V62.608h43.872Zm115.284 0V130h-16.416V62.608h16.416Zm118.552 54.72h21.504V130h-37.92V62.608h16.416v54.72Zm195.895-54.72V130h-16.416V89.584L450.067 130h-13.248l-15.168-40.512V130h-16.416V62.608h19.392l18.912 46.656 18.72-46.656h19.296ZM728.551 130l-14.016-25.44h-3.936V130h-16.416V62.608h27.552c5.312 0 9.824.928 13.536 2.784 3.776 1.856 6.592 4.416 8.448 7.68 1.856 3.2 2.784 6.784 2.784 10.752 0 4.48-1.28 8.48-3.84 12-2.496 3.52-6.208 6.016-11.136 7.488L747.079 130h-18.528Zm-17.952-37.056h10.176c3.008 0 5.248-.736 6.72-2.208 1.536-1.472 2.304-3.552 2.304-6.24 0-2.56-.768-4.576-2.304-6.048-1.472-1.472-3.712-2.208-6.72-2.208h-10.176v16.704ZM889 118.096h-25.152L859.816 130h-17.184l24.384-67.392h19.008L910.408 130h-17.376L889 118.096Zm-4.224-12.672-8.352-24.672-8.256 24.672h16.608Z"
+							/>
 
-    <script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
-    <script src="/static/js/jquery-ajax.js"></script>
-</body>
+							<path
+								class="wheel"
+								fill="#083a30"
+								fill-rule="evenodd"
+								d="M585.5 158c34.518 0 62.5-27.982 62.5-62.5S620.018 33 585.5 33 523 60.982 523 95.5s27.982 62.5 62.5 62.5Zm.5-13c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16Zm-18-50c0 8.837-7.163 16-16 16s-16-7.163-16-16 7.163-16 16-16 16 7.163 16 16Zm51 16c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16Zm-18-49c0 8.837-7.163 16-16 16s-16-7.163-16-16 7.163-16 16-16 16 7.163 16 16Zm-15.5 40a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"
+								clip-rule="evenodd"
+							>
+								<animatetransform
+									attributeName="transform"
+									attributeType="XML"
+									type="rotate"
+									from="0 585.5 95.5"
+									to="360 585.5 95.5"
+									dur="3s"
+									repeatCount="indefinite"
+								/>
+							</path>
+						</svg>
+					</p>
+					<p class="email-col">
+						<a class="footer-email-link" href="mailto:support@filmora-ai.com"
+							>support@filmora-ai.com</a
+						>
+					</p>
+					<p class="copyright">
+						Copyright &copy; 2027 Filmora.All Rights Reserved
+					</p>
+				</div>
+				<nav class="nav-first-column">
+					<ul class="footer-nav">
+						<li><a class="footer-link" href="#">How it works</a></li>
+						<li><a class="footer-link" href="#">Collections</a></li>
+						<li><a class="footer-link" href="#">Plans &amp; Prising</a></li>
+					</ul>
+				</nav>
+				<nav class="nav-second-column">
+					<ul class="footer-nav">
+						<li><a class="footer-link" href="#">FAQs</a></li>
+						<li><a class="footer-link" href="#">Get Started</a></li>
+						<li><a class="footer-link" href="#">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</footer>
+
+		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
+		<script src="/static/js/jquery-ajax.js"></script>
+		<script src="/static/js/script.js"></script>
+
+	</body>
 </html>
