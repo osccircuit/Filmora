@@ -35,7 +35,7 @@ Instead, 1rem = 1em = 16px */
 	}
 }
 
-/* **************************** */
+/* **************************** */ 
 /* BELOW 1008px  */
 /* **************************** */
 
@@ -148,7 +148,7 @@ Instead, 1rem = 1em = 16px */
 		position: absolute;
 		top: 0;
 		right: 0;
-		background-color: rgba(51, 51, 51, 0.8); /* сплошной тёмный фон */
+		background-color: rgba(8, 42, 41, 0.2); /* сплошной тёмный фон */
 
 		padding: 1rem 0;
 		width: 22rem;
@@ -389,7 +389,7 @@ Instead, 1rem = 1em = 16px */
 
 	.main-nav-block {
 		
-		background-color: rgba(51, 51, 51, 0.97); /* сплошной тёмный фон */
+		background-color:  rgba(8, 42, 41, 0.97);; /* сплошной тёмный фон */
 width: 100%;
 height: 100vh;
 		
