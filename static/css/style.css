@@ -69,7 +69,30 @@
 
 /* About Section 
 ================*/
+.section-services {
+	background-color: #e6eaea;
+}
 
+.header__services {
+	padding: 0  9.6rem 0;
+	position: relative;
+}
+
+.nav-services {
+	margin-top: 2rem;
+	background-image: linear-gradient(
+			to bottom,
+			rgba(30, 30, 30, 0.6),
+			rgba(30, 30, 30, 0.6)
+		),
+		url(/img/backgr-2.jpg);
+
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	align-items: center;
+}
 
 
 /* Running line 
@@ -77,8 +100,8 @@
 .ticker {
 	white-space: nowrap; /* Отключаем перенос текста */
 	overflow: hidden; /* Скрываем лишнее */
-	background-color: #e6eaea;
-	color: #333;
+	background-color: #083a30;
+	color: #fff;
 	padding: 10px;
 	box-sizing: border-box;
 	font-size: 1.8rem;
@@ -86,7 +109,7 @@
 }
 
 .ticker span {
-	color: #083a30;
+	color: #43a694;
 	font-size: 2.4rem;
 	font-weight: 600;
 }
