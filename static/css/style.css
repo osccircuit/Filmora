@@ -4,25 +4,22 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  justify-content: flex-start; 
+	justify-content: flex-start;
 	min-height: 100vh;
-	
-	
-	
+
 	/* height: 100%;
 	width: 100%; */
 }
 
-.registration-container  {
+.registration-container {
 	background-color: #082a29;
-	
+
 	padding: 4rem;
 	border-radius: 9px;
 	border: 0.1rem #43a694 solid;
 	box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.6);
 	max-width: 35rem;
 	text-align: center;
-	
 }
 
 .registration-container h2 {
@@ -45,7 +42,6 @@
 	color: #fff;
 	letter-spacing: normal;
 	font-weight: normal;
-	
 }
 
 .form-group input {
@@ -53,8 +49,6 @@
 	padding: 1rem;
 	border: 0.1rem solid #fff;
 	border-radius: 4px;
-	
-	
 }
 
 .btn-cta {
@@ -65,7 +59,7 @@
 	padding: 1.6rem 3.2rem;
 	border-radius: 9px;
 	margin-top: 2.4rem;
-	
+
 	transition: all 0.3s;
 }
 
@@ -73,3 +67,41 @@
 	background-color: #082a29;
 }
 
+/* About Section 
+================*/
+
+
+
+/* Running line 
+ ===============*/
+.ticker {
+	white-space: nowrap; /* Отключаем перенос текста */
+	overflow: hidden; /* Скрываем лишнее */
+	background-color: #e6eaea;
+	color: #333;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.ticker span {
+	color: #083a30;
+	font-size: 2.4rem;
+	font-weight: 600;
+}
+
+.ticker-text {
+	display: inline-block;
+	animation: ticker 25s linear infinite; /* Создаём бесконечную анимацию */
+	padding-left: 100%; /* Начинаем текст за пределами экрана */
+}
+
+@keyframes ticker {
+	0% {
+		transform: translateX(0); /* Начальная позиция */
+	}
+	100% {
+		transform: translateX(-100%); /* Конечная позиция (текст уходит влево) */
+	}
+}
