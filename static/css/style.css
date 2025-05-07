@@ -101,23 +101,31 @@
 	justify-content: center;
 	background-color: #0d6050;
 	color: #fff;
-	
+
 	border-radius: 9px;
 	padding: 3.2rem 4.8rem;
 }
 
 .services-item {
-  flex: 1; 
-  max-width: 30rem; 
-  text-align: start; 
+	flex: 1;
+	max-width: 30rem;
+	text-align: start;
 }
 
 .services-item h4 {
 	font-size: 1.2rem;
 	margin-top: 0.5rem;
+	margin-bottom: 1rem;
 }
 
-.services-item h3  {
+.services-item blockquote {
+	font-family: 'Poppins', sans-serif;
+	font-style: italic;
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+}
+
+.services-item h3 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 1.8rem;
 	margin-bottom: 0.6rem;
@@ -127,7 +135,6 @@
 	font-size: 1rem;
 	font-weight: 600;
 	text-transform: uppercase;
-	
 }
 
 .services-item p {
@@ -137,16 +144,11 @@
 }
 
 .services-item img {
-	
-		width: 100%; /* Изображение займёт всю доступную ширину */
-		height: auto; /* Высота будет рассчитываться автоматически */
-		object-fit: cover; /* Сохраняет пропорции и обрезает лишнее */
-		border-radius: 9px; /* Опционально: скругление углов */
-	
+	width: 100%; /* Изображение займёт всю доступную ширину */
+	height: auto; /* Высота будет рассчитываться автоматически */
+	object-fit: cover; /* Сохраняет пропорции и обрезает лишнее */
+	border-radius: 9px; /* Опционально: скругление углов */
 }
-
-
-
 
 /* Running line 
  ===============*/
@@ -182,5 +184,3 @@
 		transform: translateX(-100%); /* Конечная позиция (текст уходит влево) */
 	}
 }
-
-
