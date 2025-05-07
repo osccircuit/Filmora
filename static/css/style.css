@@ -184,3 +184,29 @@
 		transform: translateX(-100%); /* Конечная позиция (текст уходит влево) */
 	}
 }
+
+
+/* PROFILE SECTION 
+==================*/
+
+.section-profile {
+	background-color: #e6eaea;
+}
+
+.profile-box {
+	display: flex;
+    justify-content: center;
+		align-items: center;
+		
+    padding-top: 5rem;
+}
+
+.profile-container {
+	
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	width: 400px;
+	text-align: left;
+}
