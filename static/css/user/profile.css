@@ -65,9 +65,11 @@
 .profile-actions {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1.4rem;
 }
 
-.btn {
+.btn-profile:link,
+.btn-profile:visited {
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
@@ -77,6 +79,6 @@
     transition: background-color 0.3s;
 }
 
-.btn:hover {
+.btn-profile:hover {
     background-color: #0056b3;
 }
