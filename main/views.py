@@ -12,10 +12,12 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Главная - Filmora"
-        context["heading"] = "Добро пожаловать в Filmora"
-        context["text"] = (
-            "Filmora - это приложение, которое позволяет вам управлять вашей личной библиотекой фильмов. Вы можете добавлять, редактировать и удалять фильмы, а также просматривать информацию о них."
+        context["title"] = "Filmora"
+        context["heading"] = "Filmora"
+        context["hero_description"] = (
+			"Организуйте свою коллекцию фильмов с Filmora. Добавляйте, " \
+			"редактируйте и исследуйте любимые фильмы в удобном цифровом " \
+            "каталоге."
         )
         return context
 
