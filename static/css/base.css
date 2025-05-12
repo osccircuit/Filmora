@@ -204,8 +204,7 @@ nav a {
 			to bottom,
 			rgba(30, 30, 30, 0.6),
 			rgba(30, 30, 30, 0.6)
-		),
-		url(/img/backgr-2.jpg);
+		);
 
 	background-size: cover;
 	background-position: center;
@@ -345,7 +344,6 @@ nav a {
 .spool {
 	width: 4rem;
 	height: 4rem;
-	background-image: url('/img/spin-1.svg');
 	background-size: cover;
 	border-radius: 50%;
 	/* filter: hue-rotate(36deg); */
@@ -539,8 +537,7 @@ nav a {
 			to left bottom,
 			rgba(57, 85, 84, 0.35),
 			rgba(8, 42, 41, 0.35)
-		),
-		url(/img/happy\ moviegoer.jpg);
+		);
 	background-size: cover;
 	background-position: center;
 }
