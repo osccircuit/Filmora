@@ -52,16 +52,6 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-<<<<<<< HEAD
-nav {
-    background-color: #f8f8f8;
-    padding: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    position: relative;
-=======
 
 html {
 	font-size: 62.5%;
@@ -113,7 +103,6 @@ body {
 	background-color: #f8f8f8;
 	padding: 10px;
 	text-align: center;
->>>>>>> frontend
 }
 nav a {
 	margin: 0 15px;

@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    template_name = "main/index.html"
+    template_name = "main/main.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
