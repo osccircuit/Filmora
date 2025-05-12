@@ -30,6 +30,7 @@
                 {% url "library:films" genre.slug %}
                 {% endif %}" {% if selected_genre == genre.slug %}selected{% endif %}>{{ genre.name.capitalize }}</option>
                 {% endfor %}
+                <!-- Добавьте другие жанры по необходимости -->
             </select>
         </div>
     {% endif %}
