@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Все Фильмы - Filmora</title>
+		<link rel="stylesheet" href="/static/css/base.css" />
+		<link rel="stylesheet" href="/static/css/user/notifications.css" />
+
+		<link rel="stylesheet" href="/static/css/movies.css" />
+	</head>
+	<body>
+		<nav>
+			<a href="/library/">Главная</a>
+			<a href="/library/user-collection/">Моя Фильмотека</a>
+			<a href="/about/">О нас</a>
+
+			<a href="/user/profile/">Профиль</a>
+			<a href="/user/logout/">Выйти</a>
+
+			<a href="/admin/">Админ Панель</a>
+		</nav>
+
+		<div class="notifications">
+			<div id="jq-notification" class="notification success" role="alert"></div>
+		</div>
+
+		<div class="content">
+			<h1>Общая Библиотека Фильмов</h1>
+			<p>Здесь расположены фильмы которые можно добавить в вашу библиотеку.</p>
+			<div class="filter">
+				<label for="genre-select">Выберите жанр:</label>
+				<select id="genre-select" onchange="filterMovies()">
+					<option
+						value="
+            /library/movies/komediya/
+            "
+					>
+						Комедия
+					</option>
+
+					<option
+						value="
+            /library/movies/all/
+            "
+						selected
+					>
+						Все
+					</option>
+
+					<option
+						value="
+            /library/movies/triller/
+            "
+					>
+						Триллер
+					</option>
+
+					<!-- Добавьте другие жанры по необходимости -->
+				</select>
+			</div>
+			<br />
+			<div class="movies-grid">
+				<div class="movie-card">
+					<a href="/library/movies/movie/film-5/">
+						<div class="movie-image">
+							<img src="" alt="Фильм 5" />
+						</div>
+						<div class="movie-info">
+							<div class="movie-title">Фильм 5</div>
+
+							<div class="movie-description">Комедия</div>
+
+							<div class="movie-description">2010</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="movie-card">
+					<a href="/library/movies/movie/film-4/">
+						<div class="movie-image">
+							<img src="" alt="Фильм 4" />
+						</div>
+						<div class="movie-info">
+							<div class="movie-title">Фильм 4</div>
+
+							<div class="movie-description">Триллер</div>
+
+							<div class="movie-description">2006</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="movie-card">
+					<a href="/library/movies/movie/film-3/">
+						<div class="movie-image">
+							<img src="" alt="Фильм 3" />
+						</div>
+						<div class="movie-info">
+							<div class="movie-title">Фильм 3</div>
+
+							<div class="movie-description">Триллер</div>
+
+							<div class="movie-description">2013</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="movie-card">
+					<a href="/library/movies/movie/film-2/">
+						<div class="movie-image">
+							<img src="" alt="Фильм 2" />
+						</div>
+						<div class="movie-info">
+							<div class="movie-title">Фильм 2</div>
+
+							<div class="movie-description">Комедия</div>
+
+							<div class="movie-description">2015</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<br />
+			<div class="pagination">
+				<span class="step-links">
+					<a href="?page=1">&laquo; Первая</a>
+					<a href="#">Предыдущая</a>
+
+					<span class="current"> Страница 1 из 2 </span>
+
+					<a href="?page=2">Следующая</a>
+					<a href="?page=2">Последняя &raquo;</a>
+				</span>
+			</div>
+		</div>
+		<script>
+			function filterMovies() {
+				const genreSelect = document.getElementById('genre-select')
+				const selectedUrl = genreSelect.options[genreSelect.selectedIndex].value
+				window.location.href = selectedUrl
+			}
+		</script>
+
+		<script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
+		<script src="/static/js/jquery-ajax.js"></script>
+	</body>
+</html>

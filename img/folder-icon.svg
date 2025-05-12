@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g id="File_folder" data-name="File folder">
+    <!-- Основная папка -->
+    <path d="M54.522,57.445l4.806-26.033A3,3,0,0,0,56.355,28H12.445a3.019,3.019,0,0,0-2.967,2.555L4.2,60h47.36A3.019,3.019,0,0,0,54.522,57.445Z" fill="#0d6050"></path>
+    <path d="M14,26h2V7a1,1,0,0,1,1-1H46V4H14Z" fill="#0d6050"></path>
+    <path d="M4,49.763,7.5,30.23A4.943,4.943,0,0,1,12,26.04V12.184A3,3,0,0,0,10,15v2a1,1,0,0,1-1,1H7a3,3,0,0,0-3,3Z" fill="#0d6050"></path>
+    <path d="M52,18.184V26h2V21A3,3,0,0,0,52,18.184Z" fill="#0d6050"></path>
+
+    <!-- Файл с анимацией -->
+    <path d="M18,26H50V8H18Zm3-16H47a1,1,0,0,1,0,2H21a1,1,0,0,1,0-2Zm0,4H47a1,1,0,0,1,0,2H21a1,1,0,0,1,0-2Zm0,4H47a1,1,0,0,1,0,2H21a1,1,0,0,1,0-2Zm0,4H47a1,1,0,0,1,0,2H21a1,1,0,0,1,0-2Z" fill="#0d6050">
+      <!-- Анимация перемещения -->
+      <animateTransform
+        attributeName="transform"
+        attributeType="XML"
+        type="translate"
+        values="0 0; 0 -5; 0 0"
+        dur="1s"
+        repeatCount="indefinite"
+      />
+    </path>
+  </g>
+</svg>

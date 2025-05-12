@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Filmora</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/user/notifications.css">
+    
+<link rel="stylesheet" href="/static/css/user/login.css">
+
+</head>
+<body>
+    <nav>
+        <a href="/library/">Главная</a>
+        <a href="/library/user-collection/">Моя Фильмотека</a>
+        <a href="/about/">О нас</a>
+        
+            <a href="/user/login/">Войти</a>
+            <a href="/user/registration/">Зарегестрироваться</a>
+         
+        
+    </nav>
+    
+
+
+
+
+    <div class="notifications">
+        <div id="jq-notification" class="notification success" role="alert">
+        </div>
+        <div id="jq-notification-error" class="notification error" role="alert">
+        </div>
+    </div> 
+
+    
+<div class="content">
+    <div class="login-container">
+        <h2>Вход</h2>
+        <form action="/user/login/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="kei5XyMG1Y510JyEQqGcUCZPdfm0GtuFl0TyzmXTB6yoamdXppe19sSp1VhmPQMj">
+            
+            
+            
+            <div class="form-group">
+                <label for="id_username">Имя пользователя</label>
+                <input type="text" id="id_username" value="" placeholder="Введите имя пользователя" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="id_password">Имя пользователя</label>
+                <input type="password" id="id_password" placeholder="Введите пароль" name="password" required>
+            </div>
+            <button type="submit">Войти</button> 
+        </form>
+        <div class="register-link">
+            <p>Нет аккаунта? <a href="/user/registration/">Зарегистрироваться</a></p>
+        </div>
+    </div>
+</div>
+
+    <script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/static/js/jquery-ajax.js"></script>
+</body>
+</html>

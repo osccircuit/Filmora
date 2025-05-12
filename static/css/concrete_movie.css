@@ -1,231 +1,232 @@
 movie-detail {
-    display: flex;
-    gap: 20px;
+	display: flex;
+	gap: 20px;
 }
 .movie-image {
-    flex: 1;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	flex: 1;
+	background-color: #f0f0f0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .movie-image img {
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 .movie-alt {
-    padding: 20px;
-    text-align: center;
-    color: #666;
+	padding: 20px;
+	text-align: center;
+	color: #666;
 }
 .movie-info {
-    flex: 2;
-    padding: 15px;
+	flex: 2;
+	padding: 15px;
 }
 
 .btn-add {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	text-decoration: none;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
 }
 
 .btn-add-disabled {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #969798;
-    color: #ffffff;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: default;
-    font-size: 16px;
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #969798;
+	color: #ffffff;
+	text-decoration: none;
+	border: none;
+	border-radius: 4px;
+	cursor: default;
+	font-size: 16px;
 }
 
 .btn-add:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 /* Стили для формы рецензии */
 .review-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #f9f9f9;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .review-form h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+	margin-bottom: 20px;
+	font-size: 24px;
+	color: #333;
 }
 
 .form-group {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: #555;
 }
 
 .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    resize: vertical;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	resize: vertical;
 }
 
 /* Стили для звездного рейтинга */
 .star-rating {
-    display: flex;
-    flex-direction: row-reverse; /* Обратный порядок, чтобы звезды заполнялись слева направо */
-    justify-content: flex-end;
+	display: flex;
+	flex-direction: row-reverse; /* Обратный порядок, чтобы звезды заполнялись слева направо */
+	justify-content: flex-end;
 }
 
 .star-rating input {
-    display: none; /* Скрываем радио-кнопки */
+	display: none; /* Скрываем радио-кнопки */
 }
 
 .star-rating label {
-    font-size: 24px;
-    color: #ccc; /* Цвет неактивных звезд */
-    cursor: pointer;
-    transition: color 0.2s ease;
+	font-size: 24px;
+	color: #ccc; /* Цвет неактивных звезд */
+	cursor: pointer;
+	transition: color 0.2s ease;
 }
 
 .star-rating label::before {
-    content: "☆"; /* Пустая звезда */
+	content: '☆'; /* Пустая звезда */
 }
 
 .star-rating input:checked ~ label::before {
-    content: "★"; /* Заполненная звезда */
-    color: #ffcc00; /* Цвет активных звезд */
+	content: '★'; /* Заполненная звезда */
+	color: #ffcc00; /* Цвет активных звезд */
 }
 
 .star-rating label:hover,
 .star-rating label:hover ~ label {
-    color: #ffcc00; /* Цвет при наведении */
+	color: #ffcc00; /* Цвет при наведении */
 }
 
 .submit-btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
 }
 
 .review-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
 }
 
 .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
 }
 
 .username {
-    font-weight: bold;
-    color: #007bff;
+	font-weight: bold;
+	color: #007bff;
 }
 
 .date {
-    font-size: 14px;
-    color: #666;
+	font-size: 14px;
+	color: #666;
 }
 
 .review-text p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
 }
 
 /* Стили для рейтинга в виде звезд */
 .review-rating {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .star-rating {
-    display: flex;
-    gap: 5px;
+	display: flex;
+	gap: 5px;
 }
 
 .star {
-    font-size: 24px;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.2s ease;
+	font-size: 24px;
+	color: #ccc;
+	cursor: pointer;
+	transition: color 0.2s ease;
 }
 
 .star.filled {
-    color: #ffcc00;
+	color: #ffcc00;
 }
 
 .profile-photo {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .profile-photo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .profile-photo-placeholder {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #007bff;
-    color: #fff;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #007bff;
+	color: #fff;
 }
 
 .pagination {
-    text-align: center;
-    margin-top: 20px;
+	text-align: center;
+	margin-top: 20px;
 }
 .step-links {
-    display: inline-block;
-    padding: 10px 0;
+	display: inline-block;
+	padding: 10px 0;
 }
 .step-links a {
-    margin: 0 5px;
-    padding: 8px 16px;
-    text-decoration: none;
-    color: #007bff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+	margin: 0 5px;
+	padding: 8px 16px;
+	text-decoration: none;
+	color: #007bff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	transition: background-color 0.3s, color 0.3s;
 }
 .step-links a:hover {
-    background-color: #007bff;
-    color: #fff;
+	background-color: #007bff;
+	color: #fff;
 }
 .step-links .current {
+<<<<<<< HEAD
     margin: 0 5px;
     padding: 8px 16px;
     color: #fff;
@@ -264,4 +265,12 @@ movie-detail {
 
 .btn-delete-review:hover {
     background-color: #d32f2f;
+=======
+	margin: 0 5px;
+	padding: 8px 16px;
+	color: #fff;
+	background-color: #007bff;
+	border: 1px solid #007bff;
+	border-radius: 4px;
+>>>>>>> frontend
 }

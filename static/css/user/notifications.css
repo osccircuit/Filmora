@@ -1,52 +1,57 @@
 .notifications {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 300px;
+	z-index: 1000;
 }
 
 .notification {
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-in-out;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	animation: fadeIn 0.5s ease-in-out;
 }
 
-.notification.error {
+/* .notification.error {
     background-color: #e74c3c;
-}
+} */
 
 .notification.success {
-    background-color: #2ecc71;
+	background-color: #2ecc71;
 }
 
 .notification.info {
-    background-color: #3498db;
+	background-color: #3498db;
 }
 
 .notification.warning {
-    background-color: #f39c12;
+	background-color: #f39c12;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 #jq-notification {
+<<<<<<< HEAD
     display: none; /* Initially hidden */
 }
 
 #jq-notification-error {
     display: none; /* Initially hidden */
 }
+=======
+	display: none; /* Initially hidden */
+}
+>>>>>>> frontend

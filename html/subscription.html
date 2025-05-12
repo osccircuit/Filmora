@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление подписки</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/user/notifications.css">
+    
+    <link rel="stylesheet" href="/static/css/subscription/subscription.css">
+
+</head>
+<body>
+    <nav>
+        <a href="/library/">Главная</a>
+        <a href="/library/user-collection/">Моя Фильмотека</a>
+        <a href="/about/">О нас</a>
+        
+            <a href="/user/profile/">Профиль</a> 
+            <a href="/user/logout/">Выйти</a>
+         
+        
+    </nav>
+    
+
+
+
+
+    <div class="notifications">
+        <div id="jq-notification" class="notification success" role="alert">
+        </div>
+        <div id="jq-notification-error" class="notification error" role="alert">
+        </div>
+    </div> 
+
+    
+<div class="content">
+    <div class="card-form">
+        <div class="card-inner" id="cardFlip">
+            <div class="card-front">
+                <div class="card-logo">BANK CARD</div>
+                <div class="card-number" id="displayCardNumber">•••• •••• •••• ••••</div>
+                <div class="card-details">
+                    <div>
+                        <div>CARDHOLDER NAME</div>
+                        <div id="displayCardName">FULL NAME</div>
+                    </div>
+                    <div>
+                        <div>EXPIRES</div>
+                        <div id="displayExpiry">MM/YY</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-back">
+                <div class="card-cvv" id="displayCvv">•••</div>
+            </div>
+        </div>
+
+        <div class="payment-form">
+            <div class="form-group">
+                <label for="cardNumber">Номер карты</label>
+                <input 
+                    type="text" 
+                    id="cardNumber" 
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    onfocus="document.getElementById('cardFlip').style.transform = 'rotateY(0deg)'"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="cardName">Имя на карте</label>
+                <input 
+                    type="text" 
+                    id="cardName" 
+                    placeholder="IVAN IVANOV"
+                    onfocus="document.getElementById('cardFlip').style.transform = 'rotateY(0deg)'"
+                >
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expiryDate">Срок действия</label>
+                    <input 
+                        type="text" 
+                        id="expiryDate" 
+                        placeholder="MM/ГГ"
+                        maxlength="5"
+                        onfocus="document.getElementById('cardFlip').style.transform = 'rotateY(0deg)'"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input 
+                        type="text" 
+                        id="cvv" 
+                        placeholder="123"
+                        maxlength="3"
+                        onfocus="document.getElementById('cardFlip').style.transform = 'rotateY(180deg)'"
+                    >
+                </div>
+            </div>
+            
+            <button class="pay-btn pay-subscription" data-level-subscription="premium" data-controller-url="/subscription/subscription-pay/">
+                <input type="hidden" name="csrfmiddlewaretoken" value="gLUcy0IIsfAkGum5Tuin0hV16qMZcLwHwNFU8w8LB1jB5KBws2cHiQAUniuGklwb">
+                Оплатить 1 000 ₽
+            </button>
+        </div>
+    </div>
+</div>
+
+    
+    <script src="/static/js/subscription/subscription.js"></script>
+
+    <script src="/static/js/jquery/jquery-3.7.0.min.js"></script>
+    <script src="/static/js/jquery-ajax.js"></script>
+</body>
+</html>
