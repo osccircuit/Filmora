@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block prelogin_content %}
+<section class="section-hero" style="background-image: url('{% static 'images/backgr-2.jpg' %}')">
+	<header class="header__hero">
+        <nav class="container main-nav">
+			{% include "includes/menu.html" %}
+		</nav>
+        {% include "includes/menu.html" %}
+	</header>
+    {% block content %}{% endblock content %}
+</section>
+{% endblock prelogin_content %}

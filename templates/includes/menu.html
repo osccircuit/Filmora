@@ -1,0 +1,25 @@
+{% load static %}
+
+<img class="logo" src="{% static "images/logo_filmora.svg" %}"alt="Logo Filmora" />
+
+<div class="main-nav-block">
+	<ul class="main-nav-list">
+		<li><a class="main-nav-link" href="{% url "library:films" %}">Общая фильмотека</a></li>
+		<li><a class="main-nav-link" href="{% url "library:user_movies" %}">Моя Фильмотека</a></li>
+		<li><a class="main-nav-link" href="{% url "main:about" %}">О нас</a></li>
+        {% if user.is_authenticated %}
+		    <li><a class="main-nav-link" href="{% url "users:profile" %}">Профиль</a></li>
+		    <li><a class="main-nav-link" href="{% url "users:logout" %}">Выйти</a></li>
+        {% else %}
+		    <li><a class="main-nav-link" href="{% url "users:login" %}">Войти</a></li>
+		    <li><a class="main-nav-link nav-cta" href="{% url "users:registration" %}">Присоединиться</a></li>
+        {% endif %} 
+        {% if user.is_staff or user.is_admin %}
+		    <li><a class="main-nav-link" href="{% url "admin:index" %}">Админ Панель</a></li>
+        {% endif %}
+	</ul>
+</div>
+<button class="btn-mobile-nav">
+	<ion-icon class="icon-mobile-nav" name="menu"></ion-icon>
+	<ion-icon class="icon-mobile-nav" name="close"></ion-icon>
+</button>

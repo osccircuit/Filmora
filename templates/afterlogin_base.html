@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block afterlogin_content %}
+    <section class="section-profile">
+        <nav class="container main-nav nav-services" style="background-image: url('{% static 'images/backgr-2.jpg' %}')">
+			{% include "includes/menu.html" %}
+		</nav>
+		
+        {% block content %}{% endblock content %}
+	</section>
+{% endblock afterlogin_content %}
+
+{% block page_script %}{% endblock page_script %}

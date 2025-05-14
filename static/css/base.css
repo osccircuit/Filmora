@@ -337,6 +337,34 @@ nav a {
 	background-color: rgb(13, 96, 80);
 }
 
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: rgb(13, 96, 80);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+	border-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px #082a29;
+}
+
+.btn:hover {
+    background-color: #082a29; /* Темнее при наведении */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px #082a29;
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgb(13, 96, 80);
+}
+
 /*================= 
 КАТУШКА+АНИМАЦИЯ
 =================== */

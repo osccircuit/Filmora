@@ -1,61 +1,57 @@
-{% extends "base.html" %}
+{% extends "afterlogin_base.html" %}
 
 {% load static %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static "/css/user/profile.css" %}">
-{% endblock style %}
-
 {% block content %}
-<div class="content">
-    <div class="profile-container">
-        <h2>Профиль пользователя</h2>
-        <div class="profile-info">
-            <form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
-                    <div class="profile-photo">
-                        {% if user.image %}
-                            <img src="{{ user.image.url }}" alt="Username">
-                        {% else %}
-                            <div class="profile-photo-placeholder"></div>
+<header class="profile-box container">
+	<div class="profile-container">
+		<h2>Профиль пользователя</h2>
+		<div class="profile-info">
+				<form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="form-group">
+                        <div class="profile-photo">
+                            {% if user.image %}
+                                <img src="{{ user.image.url }}" alt="Username">
+                            {% else %}
+                                <div class="profile-photo-placeholder"></div>
+                            {% endif %}
+                        </div>
+                        <label for="id_image">Изменить аватар</label>
+                        <input type="file" id="id_image" name="image">
+                        {% if form.image.errors %}
+                            <div class="notification error">
+                                <p>{{ form.image.errors }}</p>
+                            </div>
                         {% endif %}
-                    </div>
-                    <label for="id_image">Изменить аватар</label>
-                    <input type="file" id="id_image" name="image">
-                    {% if form.image.errors %}
-                        <div class="notification error">
-                            <p>{{ form.image.errors }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="profile-item">
-                    <label for="id_username">Имя пользователя:</label>
-                    <input type="text" id="id_username" name="username" value="{{ form.username.value }}" required>
-                    {% if form.username.errors %}
-                        <div class="notification error">
-                            <p>{{ form.username.errors }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="profile-item">
-                    <label for="id_email">Электронная почта:</label>
-                    <input type="email" id="id_email" name="email" value="{{ form.email.value }}" required>
-                    {% if form.email.errors %}
-                        <div class="notification error">
-                            <p>{{ form.email.errors }}</p>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="profile-actions">
-                    <label>Дата регистрации:</label>
-                    <span class="date">{{ user.date_joined|date:"c" }}</span>
-                </div>
-                <div class="profile-actions">
-                    <button type="submit" class="btn">Сохранить изменения</button>
-                    <a href="{% url 'users:logout' %}" class="btn">Выйти</a>
-                </div>
-            </form>
+					</div>	
+					<div class="profile-item">
+						<label for="id_username">Имя пользователя:</label>
+                        <input type="text" id="id_username" name="username" value="{{ form.username.value }}" required>
+                        {% if form.username.errors %}
+                            <div class="notification error">
+                                <p>{{ form.username.errors }}</p>
+                            </div>
+                        {% endif %}
+					</div>
+					<div class="profile-item">
+						<label for="id_email">Электронная почта:</label>
+                        <input type="email" id="id_email" name="email" value="{{ form.email.value }}" required>
+                        {% if form.email.errors %}
+                            <div class="notification error">
+                                <p>{{ form.email.errors }}</p>
+                            </div>
+                        {% endif %}
+					</div>
+					<div class="profile-actions">
+						<label>Дата регистрации:</label>
+                        <span class="date">{{ user.date_joined|date:"c" }}</span>
+					</div>
+					<div class="profile-actions">
+						<button type="submit" class="btn">Сохранить изменения</button>
+                        <a href="{% url 'users:logout' %}" class="btn-profile btn--full">Выйти</a>
+				    </div>
+			</form>
             <!-- Добавляем после формы, перед закрывающими div -->
             <div class="subscription-card">
                 <h3>Статус подписки {{ user.type_of_sub }}</h3>
@@ -74,8 +70,9 @@
                     <a href="{% url 'subscription:subscription_variant' %}" class="btn">Оформить подписку</a>
                 {% endif %}
             </div>
-    </div>
-</div>
+		</div>
+	</div>
+</header>
 {% endblock content %}
 
 {% block page_script %}
