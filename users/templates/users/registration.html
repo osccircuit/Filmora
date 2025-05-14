@@ -2,54 +2,74 @@
 
 {% load static %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static "/css/user/registration.css" %}">
-{% endblock style %}
-
 {% block content %}
-<div class="content">
-    <div class="registration-container">
-        <h2>Регистрация</h2>
-        <form action="{% url "user:registration" %}" method="post">
+<div class="registration-form">
+	<div class="registration-container">
+		<h2>Регистрация</h2>
+		<form action="{% url "user:registration" %}" method="post">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="id_username">Имя пользователя</label>
-                <input type="text" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" id="id_username" name="username" required>
+			<div class="form-group">
+				<label for="id_username">Имя пользователя</label>
+				<input
+					type="text"
+					value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+					id="id_username"
+					name="username"
+					required
+				/>
                 {% if form.username.errors %}
                 <div class="notification error">
                     <p>{{ form.username.errors }}</p>
                 </div>
                 {% endif %}
-            </div>
-            <div class="form-group">
-                <label for="id_email">Электронная почта</label>
-                <input type="email" value="{% if form.email.value %}{{ form.email.value }}{% endif %}" id="id_email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="id_email">Электронная почта</label>
+				<input
+					type="email"
+					value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+					id="id_email"
+					name="email"
+					required
+				/>
                 {% if form.email.errors %}
                 <div class="notification error">
                     <p>{{ form.email.errors }}</p>
                 </div>
                 {% endif %}
-            </div>
-            <div class="form-group">
-                <label for="id_password1">Пароль</label>
-                <input type="password" value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}" id="id_password1" name="password1" required>
+			</div>
+			<div class="form-group">
+				<label for="id_password1">Пароль</label>
+				<input
+					type="password"
+					value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}"
+					id="id_password1"
+					name="password1"
+					required
+				/>
                 {% if form.password1.errors %}
                 <div class="notification error">
                     <p>{{ form.password1.errors }}</p>
                 </div>
                 {% endif %}
-            </div>
-            <div class="form-group">
-                <label for="id_password2">Подтвердите пароль</label>
-                <input type="password" value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}" id="id_password2" name="password2" required>
+			</div>
+			<div class="form-group">
+				<label for="id_password2">Подтвердите пароль</label>
+				<input
+					type="password"
+					value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
+					id="id_password2"
+					name="password2"
+					required
+				/>
                 {% if form.password2.errors %}
                 <div class="notification error">
                     <p>{{ form.password2.errors }}</p>
                 </div>
                 {% endif %}
-            </div>
-            <button type="submit">Зарегистрироваться</button>
-        </form>
-    </div>
+			</div>
+			<button class="btn-cta" type="submit">Зарегистрироваться</button>
+		</form>
+	</div>
 </div>
 {% endblock content %}
