@@ -44,14 +44,9 @@
 }
 
 #jq-notification {
-<<<<<<< HEAD
     display: none; /* Initially hidden */
 }
 
 #jq-notification-error {
     display: none; /* Initially hidden */
 }
-=======
-	display: none; /* Initially hidden */
-}
->>>>>>> frontend
